@@ -1,6 +1,7 @@
 const express = require('express');
 const PORT = process.env.PORT || 5000;
 const axios = require('axios');
+const path = require('path');
 const app = express();
 const http = require('http');
 const xml2js = require('xml2js');
@@ -26,4 +27,10 @@ app.get('/api/alert', (request, response) => {
       });
     });
   });
+});
+
+app.use(express.static('/build'));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
 });

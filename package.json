@@ -1,6 +1,6 @@
 {
-  "name": "traffic-information",
-  "version": "0.1.0",
+  "name": "signaali",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -51,6 +51,6 @@
     "nodemon": "^2.0.2"
   },
   "keywords": [],
-  "author": "",
+  "author": "petrirh1",
   "license": "ISC"
 }

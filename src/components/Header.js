@@ -10,6 +10,7 @@ const Header = () => {
       <img
         className='app-logo'
         src={require(theme === 'dark' ? './icons/app-logo-dark.svg' : './icons/app-logo-light.svg')}
+        alt=''
       />
       <i
         className='material-icons-round'
