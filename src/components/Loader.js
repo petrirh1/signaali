@@ -5,8 +5,8 @@ import './css/skeleton.css';
 
 const Loader = ({ data, index }) => {
   const [theme] = useContext(ThemeContext);
-  let color = theme === 'dark' ? '#303133' : '#DCDCDC';
-  let highlightColor = theme === 'dark' ? '#292A2B' : '#CFCFCF';
+  let color = theme === 'dark' ? '#25262A' : '#DCDCDC';
+  let highlightColor = theme === 'dark' ? '#202024' : '#CFCFCF';
 
   return (
     <div className='skeleton-container' style={{ border: `5px solid ${color}` }}>

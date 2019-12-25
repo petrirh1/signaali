@@ -93,3 +93,10 @@ html[data-theme="dark"] ::placeholder {
     }
     
 }
+
+@media (hover: none) and (max-width: 414px) and (orientation: portrait),
+(hover: none) and (max-width: 896px) and (orientation: landscape) {
+    .search-form .clear-btn {
+        font-size: 0.8125rem;
+    }
+}

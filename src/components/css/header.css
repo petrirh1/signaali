@@ -18,17 +18,8 @@
     -webkit-tap-highlight-color: #7c7c7c2d;
 }
 
-.header .app-title {
-    margin: 0;
-    text-align: left;
-    color: #494949;
-    font-weight: 500;
-    font-size: 1.125rem;
-}
-
-.header sup {
-    color: rgba(0, 0, 0, 0.28);
-    font-weight: 700;
+.header .app-logo {
+    width: 90px;
 }
 
 html[data-theme="dark"] .header {
@@ -36,11 +27,11 @@ html[data-theme="dark"] .header {
 }
 
 html[data-theme="dark"] .header .app-title {
-    color: #8E8E8E;
+    color: rgb(189, 189, 189);
 }
 
 html[data-theme="dark"] .header sup {
-    color: rgba(142, 142, 142, 0.432);
+    color: rgba(142, 142, 142, 0.666);
     font-weight: 700;
 }
 

@@ -7,9 +7,10 @@ const Header = () => {
 
   return (
     <header className='header'>
-      <h3 className='app-title'>
-        signaali<sup>+</sup>
-      </h3>
+      <img
+        className='app-logo'
+        src={require(theme === 'dark' ? './icons/app-logo-dark.svg' : './icons/app-logo-light.svg')}
+      />
       <i
         className='material-icons-round'
         onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>

@@ -71,3 +71,10 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(100%, 100%));
   }
 }
+
+@media (hover: none) and (max-width: 414px) and (orientation: portrait),
+(hover: none) and (max-width: 896px) and (orientation: landscape) {
+  input[type="text"] {
+    font-size: 1rem; 
+  }
+}

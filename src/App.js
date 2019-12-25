@@ -25,8 +25,6 @@ function App() {
       .finally(() => setLoading(false));
   }, []);
 
-  useEffect(() => console.log(data));
-
   const userFilter = searchTerm => {
     const newData = [...data];
 
@@ -41,7 +39,7 @@ function App() {
       <div className='App'>
         <BackTop style={{ right: '2rem', bottom: '2rem' }} />
         <Header />
-        <SearchForm userFilter={userFilter} />
+        <SearchForm userFilter={userFilter} data={filtered} />
         <div className='content-container'>
           {isLoading
             ? [...new Array(100)].map((data, index) => <Loader data={data} key={index} />)

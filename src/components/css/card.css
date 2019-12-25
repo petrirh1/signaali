@@ -4,7 +4,7 @@
     font-size: 0.8125rem;
     background: white;
     border-radius: 5px;
-    cursor: pointer;
+    overflow: hidden;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 2fr 1fr;
@@ -14,27 +14,6 @@
     box-shadow: 
     0 6px 8px rgba(102, 119, 136, 0.03),
     0 1px 2px rgba(102, 119, 136, 0.3);
-}
-
-.alert-card:hover {
-    border: 2px solid #9ABCF3;
-}
-
-.alert-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    opacity: 0;
-    background: rgba(154, 188, 243, 0.015);
-    transition: all 0.3s ease;
-}
-
-.alert-card:hover::before {
-    content: "";
-    opacity: 1;
 }
 
 .alert-card i {
@@ -64,77 +43,6 @@
     color: #B1B1B1;
 }
 
-.ant-modal-wrap  {
-    overflow-y: scroll;
-}
-
-.ant-modal-body {
-    padding: 0;
-}
-
-.modal-window div {
-    border: none;
-}
-
-.modal-window .ant-modal-body {
-    overflow: hidden;
-    height: 60vh;
-    background: rgb(228, 228, 228);
-}
-
-.modal-window .ant-modal-header {
-    text-align: center;
-    padding: 20px 10px;
-}
-
-.modal-window .ant-modal-footer {
-    padding: 20px 10px;
-}
-
-.modal-window button {
-    background: #E0E1E2;
-    border: 1px solid #D8D8D8;
-    color: #494949;
-    font-weight: 500;
-    font-size: 0.75rem;
-    box-shadow: 0 0 0 0 transparent;
-}
-
-.modal-window button:hover {
-    color: #494949;
-    background: #CACBCD;
-    border: 1px solid rgb(191, 192, 194);
-}
-
-.modal-window button:active {
-    color: #494949;
-    background: #BABBBC;
-}
-
-html[data-theme="dark"] .modal-window .ant-modal-content,
-html[data-theme="dark"] .modal-window .ant-modal-header {
-    background: #09090a;
-    color: #b9b9b9;
-}
-
-html[data-theme="dark"] .modal-window button {
-    color: #c6c8ce;
-    background: #55575c;
-    border: 2px solid #595c61;
-    font-weight: 500;
-    font-size: 0.75rem;
-    box-shadow: 0 0 0 0 transparent;
-}
-
-html[data-theme="dark"] .modal-window button:hover {
-    background: #67696E;
-    border: 2px solid transparent;
-}
-
-html[data-theme="dark"] .modal-window button:active {
-    background: #45474b;
-}
-
 html[data-theme="dark"] .alert-card {
     background: #1a1b1d;
     box-shadow: 
@@ -143,26 +51,9 @@ html[data-theme="dark"] .alert-card {
 }
 
 html[data-theme="dark"] .alert-card .card-title {
-    color: rgb(136, 138, 141);
+    color: #989b9e;
 }
 
 html[data-theme="dark"] .alert-card .card-description {
     color: #606163;
-}
-
-html[data-theme="dark"] .alert-card:hover {
-    border: 2px solid rgba(154, 188, 243, 0.6);
-}
-
-@media all and (hover: none) {
-    html[data-theme="dark"] .alert-card:hover,
-    .alert-card:hover {
-        border: 2px solid transparent;
-    }
-
-    html[data-theme="dark"] .alert-card:hover::before,
-    .alert-card:hover::before {
-        content: "";
-        opacity: 0;
-    }
 }
