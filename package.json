@@ -20,12 +20,12 @@
     "xml2js": "^0.4.22"
   },
   "scripts": {
-    "start": "node server",
+    "start": "node index",
     "client": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "nodemon server.js",
+    "server": "nodemon index.js",
     "dev": "concurrently  \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "npm install && npm run build"
   },
