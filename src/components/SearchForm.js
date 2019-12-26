@@ -5,8 +5,8 @@ import './css/search-form.css';
 const SearchForm = ({ userFilter, data }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
-  const handleOnChange = e => {
-    userFilter(e);
+  const handleOnChange = value => {
+    userFilter(value);
   };
 
   const handleClear = () => {

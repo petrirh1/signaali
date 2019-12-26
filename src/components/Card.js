@@ -87,7 +87,7 @@ const Card = ({ data }) => {
       </i>
       <div className='content-wrapper'>
         <h4 className='card-title'>{removeAfterSlash(data.title[0])}</h4>
-        <p className='card-description'>{removeAfterLastNumber(data.description[0])}</p>
+        <p className='card-date'>{removeAfterLastNumber(data.description[0])}</p>
       </div>
     </div>
   );

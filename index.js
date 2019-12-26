@@ -6,7 +6,7 @@ const app = express();
 const http = require('http');
 const xml2js = require('xml2js');
 const parser = new xml2js.Parser({ attrkey: 'ATTR' });
-const url = 'http://www.peto-media.fi/tiedotteet/rss.xml';
+const url = 'http://www.peto-media.fi/tiedotteet/rss.xml1';
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 

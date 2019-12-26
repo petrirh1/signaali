@@ -19,3 +19,7 @@
     align-self: center;
     margin-bottom: 20px;
 }
+
+.skeleton-container span {
+    border-radius: 25px;
+}

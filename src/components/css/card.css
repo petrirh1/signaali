@@ -38,7 +38,7 @@
     color: #494949;
 }
 
-.alert-card .card-description {
+.alert-card .card-date {
     margin: 0;
     color: #B1B1B1;
 }
@@ -54,6 +54,6 @@ html[data-theme="dark"] .alert-card .card-title {
     color: #989b9e;
 }
 
-html[data-theme="dark"] .alert-card .card-description {
+html[data-theme="dark"] .alert-card .card-date {
     color: #606163;
 }

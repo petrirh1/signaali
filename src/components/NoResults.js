@@ -1,13 +1,15 @@
 import React from 'react';
 import './css/no-results.css';
 
-const NoResults = () => {
+const NoResults = ({ dataLen }) => {
   return (
     <div className='no-results-container'>
       <i className='material-icons-round' style={{ fontSize: '48px' }}>
-        search
+        {dataLen > 0 ? 'search' : 'warning'}
       </i>
-      <p className='no-results-description'>Ei hakutuloksia</p>
+      <p className='no-results-description'>
+        {dataLen > 0 ? 'Ei hakutuloksia' : 'Hups, jotain meni pieleen...'}
+      </p>
     </div>
   );
 };

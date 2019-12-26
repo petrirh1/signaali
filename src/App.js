@@ -44,7 +44,7 @@ function App() {
           {isLoading
             ? [...new Array(100)].map((data, index) => <Loader data={data} key={index} />)
             : filtered.map((data, index) => <Card data={data} key={index} />)}
-          {filtered.length < 1 ? <NoResults /> : null}
+          {filtered.length < 1 ? <NoResults dataLen={data.length} /> : null}
         </div>
       </div>
     </ThemeProvider>
