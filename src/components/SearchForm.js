@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import './css/search-form.css';
 
 const SearchForm = ({ userFilter, data }) => {
@@ -34,3 +35,8 @@ const SearchForm = ({ userFilter, data }) => {
 };
 
 export default SearchForm;
+
+SearchForm.propTypes = {
+  userFilter: PropTypes.func,
+  data: PropTypes.array
+};

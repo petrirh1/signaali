@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from './ThemeContext';
+import PropTypes from 'prop-types';
 import 'antd/dist/antd.css';
 import './css/card.css';
 
-const Alert = ({ data }) => {
+const Card = ({ data }) => {
   const [theme] = useContext(ThemeContext);
   const low = theme === 'dark' ? '#888C8F' : '#9D9D9D';
   const medium = theme === 'dark' ? '#FFD160' : '#FFB500';
@@ -92,4 +93,8 @@ const Alert = ({ data }) => {
   );
 };
 
-export default Alert;
+export default Card;
+
+Card.propTypes = {
+  data: PropTypes.object
+};
