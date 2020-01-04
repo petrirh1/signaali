@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import { ThemeContext } from './ThemeContext';
-import './css/skeleton.css';
+import './css/loader.css';
 
 const Loader = ({ data, index }) => {
   const [theme] = useContext(ThemeContext);
@@ -15,7 +15,7 @@ const Loader = ({ data, index }) => {
           <div className='skeleton-icon--placeholder'>
             <Skeleton circle={true} height={50} width={50} />
           </div>
-          <Skeleton count={2} data={data} key={`skeleton-${index}`} />
+          <Skeleton count={3} data={data} key={`skeleton-${index}`} />
         </div>
       </SkeletonTheme>
     </div>
