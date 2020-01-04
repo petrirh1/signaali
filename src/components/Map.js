@@ -87,12 +87,8 @@ const Map = ({ data }) => {
       getCursor={handleCursor}
       interactiveLayerIds={['point']}
       onViewportChange={handleViewportChange}
-      mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-      mapStyle={
-        theme === 'dark'
-          ? process.env.REACT_APP_MAPBOX_STYLE_DARK
-          : process.env.REACT_APP_MAPBOX_STYLE_LIGHT
-      }>
+      mapboxApiAccessToken={REACT_APP_MAPBOX_TOKEN}
+      mapStyle={theme === 'dark' ? REACT_APP_MAPBOX_STYLE_DARK : REACT_APP_MAPBOX_STYLE_LIGHT}>
       <Source id='alert' type='geojson' data={geoJSON}>
         <Layer
           id='point'
