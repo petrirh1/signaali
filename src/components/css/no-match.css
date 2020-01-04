@@ -1,0 +1,104 @@
+.no-match-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.no-match-title,
+html[data-theme="dark"] .no-match-title {
+    font-size: 8rem;
+    margin: 0;
+    line-height: 120%;
+}
+
+.no-match-title {
+    color: #55575B;
+}
+
+html[data-theme="dark"] .no-match-title {
+    color: #ffffff;
+}
+
+.no-match-description,
+html[data-theme="dark"] .no-match-description {
+    font-size: 1rem;
+}
+
+.no-match-description { 
+    font-weight: 500;
+    color: #515358;
+    background: #D2D2D2;
+}
+
+html[data-theme="dark"] .no-match-description {
+    font-weight: 400;
+    color: white;
+    background: gray;
+}
+
+.no-match-link-wrapper {
+    font-weight: 500;
+    margin: 3rem 0 0 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.no-match-link-wrapper .material-icons-round,
+html[data-theme="dark"] .no-match-link-wrapper .material-icons-round {
+    font-size: 24px;
+    padding: 0 5px 0 0 !important;
+}
+
+.no-match-link-wrapper .material-icons-round {
+    color: #00000056 !important;
+}
+
+html[data-theme="dark"] .no-match-link-wrapper .material-icons-round {
+    color: gray !important;
+}
+
+
+.no-match-link-back,
+html[data-theme="dark"] .no-match-link-back {
+    font-size: 0.875rem;
+    padding: 0 5px 0 5px;
+    margin: 0;
+    cursor: pointer;
+    transition: all .25s ease;
+}
+
+.no-match-link-back {
+    color: #424347;
+}
+
+html[data-theme="dark"] .no-match-link-back {
+    color: white;
+}
+
+@media (hover:hover) {
+    .no-match-link-back:hover {
+        background: #D2D2D2;
+    }
+
+    html[data-theme="dark"] .no-match-link-back:hover {
+        background: gray;
+    }
+}
+
+@media (hover:none) {
+    .no-match-link-back, 
+    html[data-theme="dark"] .no-match-link-back {
+        transition: none;
+    }
+
+    .no-match-link-back:active {
+        background: #D2D2D2;
+    }
+
+    html[data-theme="dark"] .no-match-link-back:active {
+        background: gray;
+    }
+}
