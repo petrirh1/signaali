@@ -1,0 +1,25 @@
+.skeleton-container {
+    padding: 10px;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.skeleton-container .skeleton-content {
+    font-size: 14px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1.85fr 1fr;
+    grid-template-areas: "." ".";
+    row-gap: 1em;
+}
+
+.skeleton-container .skeleton-icon--placeholder {
+    align-self: center;
+    margin-bottom: 10px;
+}
+
+.skeleton-container span {
+    border-radius: 25px;
+}
