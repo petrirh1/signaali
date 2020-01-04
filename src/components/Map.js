@@ -2,7 +2,6 @@ import React, { useState, useContext } from 'react';
 import ReactMapGL, { Source, Layer, Popup, LinearInterpolator } from 'react-map-gl';
 import { ThemeContext } from './ThemeContext';
 import GeoJSON from 'geojson';
-import 'mapbox-gl/dist/mapbox-gl.css';
 import './css/map.css';
 
 const Map = ({ data }) => {
