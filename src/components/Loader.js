@@ -5,15 +5,15 @@ import './css/loader.css';
 
 const Loader = ({ data, index }) => {
   const [theme] = useContext(ThemeContext);
-  let color = theme === 'dark' ? '#25262A' : '#DCDCDC';
-  let highlightColor = theme === 'dark' ? '#202024' : '#CFCFCF';
+  let color = theme === 'dark' ? '#2b2c31' : '#d8d8d8';
+  let highlightColor = theme === 'dark' ? '#24252a' : '#cccccc';
 
   return (
     <div className='skeleton-container' style={{ border: `5px solid ${color}` }}>
       <SkeletonTheme color={color} highlightColor={highlightColor}>
         <div className='skeleton-content'>
           <div className='skeleton-icon--placeholder'>
-            <Skeleton circle={true} height={50} width={50} />
+            <Skeleton circle={true} height={30} width={30} />
           </div>
           <Skeleton count={3} data={data} key={`skeleton-${index}`} />
         </div>

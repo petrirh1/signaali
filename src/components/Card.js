@@ -39,7 +39,7 @@ const Card = ({ data }) => {
               : severity(description) === medium
               ? mediumBG
               : highBG,
-          fontSize: '30px'
+          fontSize: '24px'
         }}>
         {setIcon(description)}
       </i>
