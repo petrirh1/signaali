@@ -87,7 +87,7 @@ const Map = ({ data }) => {
       getCursor={handleCursor}
       interactiveLayerIds={['point']}
       onViewportChange={handleViewportChange}
-      mapboxApiAccessToken='pk.eyJ1IjoicGV0cmlyaDEiLCJhIjoiY2s0aWRpaHFmMWUxYzNubnA2ZmtlYmh2ZCJ9.C46dtWtud1yttEtebVr2dA'
+      mapboxApiAccessToken='pk.eyJ1IjoicGV0cmlyaDEiLCJhIjoiY2s0aWRrOXBsMGxkZzNlbnRyeTVhZDZvbSJ9.KvgxLJ4N94L1aeh1H5uyFQ'
       mapStyle={
         theme === 'dark'
           ? 'mapbox://styles/petrirh1/ck4o4q5ib09541fjzqit8lpy1'
