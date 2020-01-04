@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Card from './components/Card';
-import SearchForm from './components/SearchForm';
 import Header from './components/Header';
-import Loader from './components/Loader';
-import NoResults from './components/NoResults';
-import { BackTop } from 'antd';
+import Map from './components/Map';
+import Home from './components/Home';
+import NoMatch from './components/NoMatch';
 import { ThemeProvider } from './components/ThemeContext';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {
+  removeWordsAfterSlash as cleanUpString,
+  removeWordsAfterLastNumber as cleanUpDescription,
+  getCoordinates,
+  setAlertType
+} from './components/Utils';
 import './App.css';
 
 function App() {
@@ -16,10 +21,21 @@ function App() {
 
   useEffect(() => {
     axios
-      .get('/api/alert')
+      .get('/api/alerts')
       .then(res => {
-        setData(res.data.rss.channel[0].item);
-        setFiltered(res.data.rss.channel[0].item);
+        const { item } = res.data.rss.channel[0];
+
+        const newItem = item.map(v => ({
+          title: cleanUpString(v.title[0])[0],
+          type: setAlertType(v.description[0]),
+          description: cleanUpString(v.title[0])[1],
+          date: cleanUpDescription(v.description[0]),
+          latitude: getCoordinates(v.title[0])[0],
+          longitude: getCoordinates(v.title[0])[1]
+        }));
+
+        setData(newItem);
+        setFiltered(newItem);
       })
       .catch(err => console.log(err))
       .finally(() => setLoading(false));
@@ -29,24 +45,35 @@ function App() {
     const newData = [...data];
 
     const filtered = newData.filter(d =>
-      d.title[0].toLowerCase().startsWith(searchTerm.toLowerCase())
+      d.title.toLowerCase().startsWith(searchTerm.toLowerCase())
     );
     setFiltered(filtered);
   };
 
   return (
     <ThemeProvider>
-      <div className='App'>
-        <BackTop style={{ right: '2rem', bottom: '2rem' }} />
-        <Header />
-        <SearchForm userFilter={userFilter} data={filtered} />
-        <div className='content-container'>
-          {isLoading
-            ? [...new Array(100)].map((data, index) => <Loader data={data} key={index} />)
-            : filtered.map((data, index) => <Card data={data} key={index} />)}
-          {filtered.length < 1 ? <NoResults dataLen={data.length} /> : null}
+      <Router>
+        <div className='App'>
+          <Header />
+          <Switch>
+            <Route
+              path='/'
+              exact
+              strict
+              render={() => (
+                <Home
+                  userFilter={userFilter}
+                  data={data}
+                  filtered={filtered}
+                  isLoading={isLoading}
+                />
+              )}
+            />
+            <Route path='/kartta' exact strict render={() => <Map data={data} />} />
+            <Route component={NoMatch} />
+          </Switch>
         </div>
-      </div>
+      </Router>
     </ThemeProvider>
   );
 }

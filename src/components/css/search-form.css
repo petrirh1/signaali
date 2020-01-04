@@ -45,13 +45,13 @@
     border: 1px solid rgb(186, 188, 192);
     cursor: pointer;
     box-shadow: 
-    0 6px 8px rgba(0, 0, 0, 0.01),
-    0 1px 2px rgba(0, 0, 0, 0.05);
+            0 6px 8px rgba(0, 0, 0, 0.01),
+            0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 ::placeholder {
-    font-weight: 400;
-    color: rgba(81, 84, 92, 0.4);
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.3);
 }
 
 html[data-theme="dark"] .search-form input[type=text] {
@@ -64,7 +64,6 @@ html[data-theme="dark"] .search-form .clear-btn {
     color: #c6c8ce;
     background: #55575c;
     border: 2px solid #595c61;
-    -webkit-tap-highlight-color: #27292c59;
 }
 
 html[data-theme="dark"] ::placeholder {
@@ -93,9 +92,39 @@ html[data-theme="dark"] ::placeholder {
     
 }
 
+@media (hover: none) {
+    .search-form .clear-btn {
+        transition: none;
+    }
+
+    .search-form .clear-btn:active {
+        background: #989c9e;
+        border: 1px solid #989c9e;
+    }
+
+    html[data-theme="dark"] .search-form .clear-btn:active {
+        background: #45474b;
+    }
+}
+
+@media all and (max-width: 320px) {
+    .search-form input[type=text] {
+        font-size: 0.75rem;
+    }
+
+    .search-form .clear-btn {
+        padding: 7px;
+    }
+}
+
 @media (hover: none) and (max-width: 414px) and (orientation: portrait),
 (hover: none) and (max-width: 896px) and (orientation: landscape) {
     .search-form .clear-btn {
         font-size: 0.8125rem;
+    }
+
+    ::placeholder {
+        font-weight: 400;
+        color: rgba(0, 0, 0, 0.2);
     }
 }

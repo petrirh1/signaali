@@ -19,27 +19,27 @@ html[data-theme="dark"] body {
 
 body {
   height: 100vh;
+  min-width: 320px;
   margin: 0;
   display: flex;
   justify-content: center;
-  background: #e6e6e6;
+  background: #E4E4E4;
   font-family: 'Roboto Mono', monospace;
-  overflow-y: scroll;
 }
 
 .App {
   margin: auto;
-  padding-bottom: 30px;
   text-align: center;
 }
 
 .content-container {
   display: grid;
+  padding-bottom: 30px;
   width: 95vw;
   justify-content: center;
   grid-template-columns: repeat(auto-fit, 300px);
-  grid-template-rows: repeat(3, 220px);
-  grid-auto-rows: 250px;
+  grid-template-rows: repeat(3, auto);
+  grid-auto-rows: minmax(min-content, max-content);
   grid-gap: 1em;
   grid-auto-flow: dense;
 }
@@ -61,8 +61,6 @@ body {
     width: calc(100vw - 30px);
     min-width: 80vw;
     grid-template-columns: repeat(auto-fit, minmax(250px, 100%));
-    grid-template-rows: repeat(3, 220px);
-    grid-auto-rows: 1fr;
   }
 }
 

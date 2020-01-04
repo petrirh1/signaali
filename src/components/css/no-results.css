@@ -3,23 +3,23 @@
 }
 
 .material-icons-round {
-    color: rgba(15, 15, 15, 0.50);
+    color: rgb(163, 163, 163);
     padding: 10px;
 }
 
 .no-results-description {
     margin-top: 10px;
     font-weight: 500;
-    color: rgba(15, 15, 15, 0.4);
+    color: #55575B;
 }
 
 html[data-theme="dark"] .material-icons-round {
-    color: rgba(255, 255, 255, 0.45);
+    color: gray;
     padding: 10px;
 }
 
 html[data-theme="dark"] .no-results-description {
     margin-top: 10px;
     font-weight: 400;
-    color: rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 1);
 }

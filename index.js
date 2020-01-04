@@ -10,7 +10,7 @@ const url = 'http://www.peto-media.fi/tiedotteet/rss.xml';
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
-app.get('/api/alert', (request, response) => {
+app.get('/api/alerts', (request, response) => {
   let req = http.get(url, res => {
     let data = '';
     res.setEncoding('latin1');

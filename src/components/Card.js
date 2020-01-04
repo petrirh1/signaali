@@ -1,71 +1,29 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from './ThemeContext';
 import PropTypes from 'prop-types';
+import { setIcon } from './Utils';
 import 'antd/dist/antd.css';
 import './css/card.css';
 
 const Card = ({ data }) => {
+  const { title, description, date } = data;
   const [theme] = useContext(ThemeContext);
-  const low = theme === 'dark' ? '#888C8F' : '#9D9D9D';
+  const low = theme === 'dark' ? '#888C8F' : '#9B9B9B';
   const medium = theme === 'dark' ? '#FFD160' : '#FFB500';
   const high = theme === 'dark' ? '#FF5F54' : '#FE6D63';
   const lowBG = theme === 'dark' ? '#25262A' : '#F5F5F5';
-  const mediumBG = theme === 'dark' ? '#262622' : '#FFF8E8';
+  const mediumBG = theme === 'dark' ? '#262622' : '#FFF4D9';
   const highBG = theme === 'dark' ? '#262224' : '#FFEFEE';
-
-  const removeAfterSlash = sentence => {
-    return sentence.replace(/\/.*?,/, ',');
-  };
-
-  const removeAfterLastNumber = sentence => {
-    return sentence.replace(/\D+$/g, '');
-  };
 
   const severity = sentence => {
     sentence = sentence.toLowerCase();
 
     if (sentence.includes('keskisuuri')) {
       return medium;
-    } else if (sentence.includes('suuri') || sentence.includes('räjähdys')) {
+    } else if (sentence.includes('suuri')) {
       return high;
     } else {
       return low;
-    }
-  };
-
-  const icon = sentence => {
-    if (typeof sentence !== 'string') return 'warning';
-
-    sentence = sentence.toLowerCase();
-
-    if (sentence.includes('hälytys')) {
-      return 'notifications_active';
-    } else if (sentence.includes('palo')) {
-      return 'whatshot';
-    } else if (sentence.includes('vahingontorjunta')) {
-      return 'eco';
-    } else if (sentence.includes('tie')) {
-      return 'directions_car';
-    } else if (sentence.includes('vesi')) {
-      return 'directions_boat';
-    } else if (sentence.includes('raide')) {
-      return 'directions_subway';
-    } else if (sentence.includes('ilma')) {
-      return 'flight';
-    } else if (sentence.includes('ensivaste')) {
-      return 'healing';
-    } else if (sentence.includes('ihmisen')) {
-      return 'emoji_people';
-    } else if (sentence.includes('eläimen')) {
-      return 'pets';
-    } else if (sentence.includes('räjähdys')) {
-      return 'report';
-    } else if (sentence.includes('vaarallisen')) {
-      return 'pan_tool';
-    } else if (sentence.includes('öljy')) {
-      return 'opacity';
-    } else {
-      return 'warning';
     }
   };
 
@@ -74,20 +32,21 @@ const Card = ({ data }) => {
       <i
         className='material-icons-round'
         style={{
-          color: severity(data.title[0]),
+          color: severity(description),
           background:
-            severity(data.title[0]) === low
+            severity(description) === low
               ? lowBG
-              : severity(data.title[0]) === medium
+              : severity(description) === medium
               ? mediumBG
               : highBG,
-          fontSize: '38px'
+          fontSize: '30px'
         }}>
-        {icon(data.title[0])}
+        {setIcon(description)}
       </i>
       <div className='content-wrapper'>
-        <h4 className='card-title'>{removeAfterSlash(data.title[0])}</h4>
-        <p className='card-date'>{removeAfterLastNumber(data.description[0])}</p>
+        <h4 className='card-title'>{title}</h4>
+        <p className='card-description'>{description}</p>
+        <p className='card-date'>{date}</p>
       </div>
     </div>
   );
