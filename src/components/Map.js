@@ -6,6 +6,8 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import './css/map.css';
 
 const Map = ({ data }) => {
+  const darkTheme = 'mapbox://styles/petrirh1/ck4o4q5ib09541fjzqit8lpy1';
+  const lightTheme = 'mapbox://styles/petrirh1/ck4pnjtrwaodx1cmixukicu6w';
   const [theme] = useContext(ThemeContext);
   const [popupInfo, setPopupInfo] = useState({
     title: '',
@@ -87,8 +89,8 @@ const Map = ({ data }) => {
       getCursor={handleCursor}
       interactiveLayerIds={['point']}
       onViewportChange={handleViewportChange}
-      mapboxApiAccessToken={REACT_APP_MAPBOX_TOKEN}
-      mapStyle={theme === 'dark' ? REACT_APP_MAPBOX_STYLE_DARK : REACT_APP_MAPBOX_STYLE_LIGHT}>
+      mapboxApiAccessToken='pk.eyJ1IjoicGV0cmlyaDEiLCJhIjoiY2s0aWRpaHFmMWUxYzNubnA2ZmtlYmh2ZCJ9.C46dtWtud1yttEtebVr2dA'
+      mapStyle={theme === 'dark' ? darkTheme : lightTheme}>
       <Source id='alert' type='geojson' data={geoJSON}>
         <Layer
           id='point'
