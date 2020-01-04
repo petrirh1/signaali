@@ -1,0 +1,80 @@
+.mapboxgl-popup {
+  max-width: 400px;
+  animation: fade-in 0.5s ease;
+}
+
+.mapboxgl-popup-content {
+  display: inline-table;
+  padding: 10px;
+  border-radius: 3px;
+  box-shadow: 
+        0px 19px 45px -20px rgba(0, 0, 0, 0.6),
+        0px 36px 50px -44px rgba(0, 0, 0, 0.27),
+        0px 1px 3px -3px rgba(0, 0, 0, 0.41);
+}
+
+.mapboxgl-popup-close-button {
+  padding-right: 10px;
+  font-size: 1.65rem;
+  transition: all 0.25s ease;
+  background: white;
+  color: #6b6b6b;
+}
+
+.mapboxgl-popup-close-button:hover {
+  color: #202020;
+  background: transparent;
+}
+
+.popup-alert-title,
+.popup-alert-description,
+.popup-alert-date {
+  text-align: left;
+  margin-right: 50px;
+  margin: 0;
+}
+
+.popup-alert-description,
+.popup-alert-date {
+  font-size: 0.8125rem;
+  color: #616161;
+}
+
+.popup-alert-title {
+  font-size: 0.875rem;
+  text-transform: capitalize;
+  padding: 0px 50px 0px 5px;
+  color: #111111;
+}
+
+.popup-alert-description {
+  padding: 0px 50px 0px 5px;
+}
+
+.popup-alert-description::first-letter {
+  text-transform: uppercase;
+}
+
+.popup-alert-date {
+  opacity: 0.65;
+  padding: 5px 50px 0px 5px;
+}
+
+@media all and (hover: none) {
+  .mapboxgl-popup {
+    max-width: 70vw;
+  }
+
+  .mapboxgl-popup-close-button:hover {
+    background: white;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
