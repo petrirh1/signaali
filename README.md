@@ -2,7 +2,7 @@
 
 ## Description
 
-Lists 100 latest emergency services alerts from Finland in realtime.
+Lists 100 latest emergency service alerts from Finland in realtime.
 
 ## Installation
 
