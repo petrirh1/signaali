@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import ReactGA from 'react-ga';
 import axios from 'axios';
 import Header from './components/Header';
 import Map from './components/Map';
@@ -21,9 +20,6 @@ function App() {
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    ReactGA.initialize('UA-155353804-1');
-    ReactGA.pageview('/');
-
     axios
       .get('/api/alerts')
       .then(res => {
