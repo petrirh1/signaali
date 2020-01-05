@@ -7,13 +7,7 @@ import Home from './components/Home';
 import NoMatch from './components/NoMatch';
 import { ThemeProvider } from './components/ThemeContext';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import {
-  removeWordsAfterSlash as cleanUpString,
-  removeWordsAfterLastNumber as cleanUpDescription,
-  parseData,
-  getCoordinates,
-  setAlertType
-} from './components/Utils';
+import { parseData } from './components/Utils';
 import './App.css';
 
 function App() {
