@@ -19,13 +19,6 @@ export const ThemeProvider = props => {
   };
 
   useEffect(() => {
-    document.body.classList.add('no-transition');
-    setTimeout(() => {
-      document.body.classList.remove('no-transition');
-    }, 0);
-  }, []);
-
-  useEffect(() => {
     switchTheme();
 
     return () => {
