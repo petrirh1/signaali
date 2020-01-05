@@ -1,16 +1,29 @@
 import { coordinates } from './Coordinates';
 const locations = [];
 
-export const removeWordsAfterSlash = sentence => {
+export const parseData = item => {
+  const newItem = item.map(v => ({
+    title: removeWordsAfterSlash(v.title[0])[0],
+    type: setAlertType(v.description[0]),
+    description: removeWordsAfterSlash(v.title[0])[1],
+    date: removeWordsAfterLastNumber(v.description[0]),
+    latitude: getCoordinates(v.title[0])[0],
+    longitude: getCoordinates(v.title[0])[1]
+  }));
+
+  return newItem;
+};
+
+const removeWordsAfterSlash = sentence => {
   const result = sentence.replace(/\/.*?,/, ',').split(',');
   return result;
 };
 
-export const removeWordsAfterLastNumber = sentence => {
+const removeWordsAfterLastNumber = sentence => {
   return sentence.replace(/\D+$/g, '');
 };
 
-export const getCoordinates = location => {
+const getCoordinates = location => {
   let lat, long;
 
   const newLocation = location.split('/')[0];
@@ -32,7 +45,7 @@ export const getCoordinates = location => {
   return [lat, long];
 };
 
-export const setAlertType = sentence => {
+const setAlertType = sentence => {
   sentence = sentence.toLowerCase();
 
   if (sentence.includes('hälytys')) {

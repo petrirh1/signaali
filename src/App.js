@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import {
   removeWordsAfterSlash as cleanUpString,
   removeWordsAfterLastNumber as cleanUpDescription,
+  parseData,
   getCoordinates,
   setAlertType
 } from './components/Utils';
@@ -28,15 +29,7 @@ function App() {
       .get('/api/alerts')
       .then(res => {
         const { item } = res.data.rss.channel[0];
-
-        const newItem = item.map(v => ({
-          title: cleanUpString(v.title[0])[0],
-          type: setAlertType(v.description[0]),
-          description: cleanUpString(v.title[0])[1],
-          date: cleanUpDescription(v.description[0]),
-          latitude: getCoordinates(v.title[0])[0],
-          longitude: getCoordinates(v.title[0])[1]
-        }));
+        const newItem = parseData(item);
 
         setData(newItem);
         setFiltered(newItem);
