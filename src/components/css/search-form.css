@@ -57,7 +57,7 @@
 html[data-theme="dark"] .search-form input[type=text] {
     color: white;
     background: #202124;
-    border: 1px solid #393b3fde;
+    border: 1px solid #202124;
 }
 
 html[data-theme="dark"] .search-form .clear-btn {
