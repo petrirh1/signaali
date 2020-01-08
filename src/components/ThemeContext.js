@@ -18,16 +18,20 @@ export const ThemeProvider = props => {
     localStorage.setItem('theme', theme);
   };
 
-  useEffect(() => {
-    switchTheme();
+  useEffect(
+    () => {
+      switchTheme();
 
-    return () => {
-      document.body.classList.add('no-transition');
-      setTimeout(() => {
-        document.body.classList.remove('no-transition');
-      }, 0);
-    };
-  }, [theme]);
+      return () => {
+        document.body.classList.add('no-transition');
+        setTimeout(() => {
+          document.body.classList.remove('no-transition');
+        }, 0);
+      };
+    },
+    // eslint-disable-next-line
+    [theme]
+  );
 
   return <ThemeContext.Provider value={[theme, setTheme]}>{props.children}</ThemeContext.Provider>;
 };
