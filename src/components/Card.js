@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { ThemeContext } from './ThemeContext';
 import PropTypes from 'prop-types';
 import { setIcon } from './Utils';
@@ -7,6 +7,7 @@ import './css/card.css';
 
 const Card = ({ data }) => {
   const { title, description, date } = data;
+  const [selectedCard, setSelectedCard] = useState(null);
   const [theme] = useContext(ThemeContext);
   const low = theme === 'dark' ? '#888C8F' : '#9B9B9B';
   const medium = theme === 'dark' ? '#FFD160' : '#FFB500';
@@ -27,6 +28,8 @@ const Card = ({ data }) => {
     }
   };
 
+  useEffect(() => console.log(selectedCard), [selectedCard]);
+
   return (
     <div className='alert-card'>
       <i
@@ -43,7 +46,9 @@ const Card = ({ data }) => {
         }}>
         {setIcon(description)}
       </i>
-      <div className='content-wrapper'>
+      <div
+        className='content-wrapper'
+        onClick={() => setSelectedCard({ title, description, date })}>
         <h4 className='card-title'>{title}</h4>
         <p className='card-description'>{description}</p>
         <p className='card-date'>{date}</p>

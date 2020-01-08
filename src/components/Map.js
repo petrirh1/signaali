@@ -4,7 +4,7 @@ import { ThemeContext } from './ThemeContext';
 import GeoJSON from 'geojson';
 import './css/map.css';
 
-const Map = ({ data }) => {
+const Map = ({ data, component }) => {
   const [theme] = useContext(ThemeContext);
   const [popupInfo, setPopupInfo] = useState({
     title: '',
