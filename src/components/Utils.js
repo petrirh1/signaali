@@ -78,8 +78,6 @@ const setAlertType = sentence => {
 };
 
 export const setIcon = sentence => {
-  if (typeof sentence !== 'string') return 'warning';
-
   sentence = sentence.toLowerCase();
 
   if (sentence.includes('hälytys')) {
@@ -90,7 +88,7 @@ export const setIcon = sentence => {
     return 'eco';
   } else if (sentence.includes('tie')) {
     return 'directions_car';
-  } else if (sentence.includes('vesi')) {
+  } else if (sentence.includes('vesi') && !sentence.includes('öljy')) {
     return 'directions_boat';
   } else if (sentence.includes('raide')) {
     return 'directions_subway';
