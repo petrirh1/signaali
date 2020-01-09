@@ -2,9 +2,10 @@ import { coordinates } from './Coordinates';
 const locations = [];
 
 export const parseData = item => {
+  console.log(item);
   const newItem = item.map(v => ({
     title: removeWordsAfterSlash(v.title[0])[0],
-    type: setAlertType(v.description[0]),
+    type: setAlertType(v.title[0]),
     description: removeWordsAfterSlash(v.title[0])[1],
     date: removeWordsAfterLastNumber(v.description[0]),
     latitude: getCoordinates(v.title[0])[0],
@@ -46,7 +47,7 @@ const getCoordinates = location => {
 };
 
 const setAlertType = sentence => {
-  sentence = sentence.toLowerCase();
+  sentence = sentence.split(',')[1].toLowerCase();
 
   if (sentence.includes('hälytys')) {
     return 'palohälytys';
@@ -78,6 +79,8 @@ const setAlertType = sentence => {
 };
 
 export const setIcon = sentence => {
+  if (typeof sentence !== 'string') return 'warning';
+
   sentence = sentence.toLowerCase();
 
   if (sentence.includes('hälytys')) {
