@@ -1,6 +1,5 @@
 .mapboxgl-popup {
   max-width: 400px;
-  animation: fade-in 0.5s ease;
 }
 
 .mapboxgl-popup-content {

@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
+import { Redirect } from 'react-router-dom';
 import { ThemeContext } from './ThemeContext';
 import PropTypes from 'prop-types';
 import { setIcon } from './Utils';
@@ -6,8 +7,8 @@ import 'antd/dist/antd.css';
 import './css/card.css';
 
 const Card = ({ data }) => {
-  const { title, description, date } = data;
-  const [selectedCard, setSelectedCard] = useState(null);
+  const { title, description, date, latitude, longitude } = data;
+  const [redirect, setRedirect] = useState(false);
   const [theme] = useContext(ThemeContext);
   const low = theme === 'dark' ? '#888C8F' : '#9B9B9B';
   const medium = theme === 'dark' ? '#FFD160' : '#FFB500';
@@ -28,32 +29,48 @@ const Card = ({ data }) => {
     }
   };
 
-  useEffect(() => console.log(selectedCard), [selectedCard]);
+  const handleClick = () => {
+    setRedirect(true);
+  };
 
   return (
-    <div className='alert-card'>
-      <i
-        className='material-icons-round'
-        style={{
-          color: severity(description),
-          background:
-            severity(description) === low
-              ? lowBG
-              : severity(description) === medium
-              ? mediumBG
-              : highBG,
-          fontSize: '24px'
-        }}>
-        {setIcon(description)}
-      </i>
-      <div
-        className='content-wrapper'
-        onClick={() => setSelectedCard({ title, description, date })}>
-        <h4 className='card-title'>{title}</h4>
-        <p className='card-description'>{description}</p>
-        <p className='card-date'>{date}</p>
-      </div>
-    </div>
+    <>
+      {redirect ? (
+        <Redirect
+          push
+          to={{
+            pathname: '/kartta',
+            search: '',
+            state: {
+              lat: latitude,
+              long: longitude
+            }
+          }}
+        />
+      ) : (
+        <div className='alert-card' onClick={handleClick}>
+          <i
+            className='material-icons-round'
+            style={{
+              color: severity(description),
+              background:
+                severity(description) === low
+                  ? lowBG
+                  : severity(description) === medium
+                  ? mediumBG
+                  : highBG,
+              fontSize: '24px'
+            }}>
+            {setIcon(description)}
+          </i>
+          <div className='content-wrapper'>
+            <h4 className='card-title'>{title}</h4>
+            <p className='card-description'>{description}</p>
+            <p className='card-date'>{date}</p>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

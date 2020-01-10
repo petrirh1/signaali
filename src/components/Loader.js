@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import { ThemeContext } from './ThemeContext';
+import PropTypes from 'prop-types';
 import './css/loader.css';
 
 const Loader = ({ data, index }) => {
@@ -23,3 +24,8 @@ const Loader = ({ data, index }) => {
 };
 
 export default Loader;
+
+Loader.propTypes = {
+  data: PropTypes.array,
+  index: PropTypes.number
+};

@@ -4,6 +4,7 @@ import SearchForm from '../components/SearchForm';
 import Card from '../components/Card';
 import Loader from '../components/Loader';
 import NoResults from '../components/NoResults';
+import PropTypes from 'prop-types';
 
 const Home = ({ userFilter, data, filtered, isLoading }) => {
   return (
@@ -12,7 +13,7 @@ const Home = ({ userFilter, data, filtered, isLoading }) => {
       <SearchForm userFilter={userFilter} data={filtered} />
       <div className='content-container'>
         {isLoading
-          ? [...new Array(100)].map((data, index) => <Loader data={data} key={index} />)
+          ? [...new Array(100)].map((d, i) => <Loader data={d} key={i} />)
           : filtered.map((data, index) => <Card data={data} key={index} />)}
         {filtered.length < 1 ? <NoResults dataLen={data.length} /> : null}
       </div>
@@ -21,3 +22,10 @@ const Home = ({ userFilter, data, filtered, isLoading }) => {
 };
 
 export default Home;
+
+Home.propTypes = {
+  userFilter: PropTypes.func,
+  data: PropTypes.array,
+  filtered: PropTypes.array,
+  isLoading: PropTypes.bool
+};

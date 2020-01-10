@@ -14,11 +14,11 @@
 
 ::selection {
   color: white;
-  background: #9ABCF3;
+  background: #9abcf3;
 }
 
-html[data-theme="dark"] body {
-  background: #35363A;
+html[data-theme='dark'] body {
+  background: #35363a;
 }
 
 body {
@@ -27,8 +27,8 @@ body {
   margin: 0;
   display: flex;
   justify-content: center;
-  background: #E4E4E4;
-  font-family: 'Roboto Mono', monospace;
+  background: #e4e4e4;
+  font-family: 'Roboto Mono', monospace, Sans-Serif;
 }
 
 .App {
@@ -69,8 +69,8 @@ body {
 }
 
 @media (hover: none) and (max-width: 414px) and (orientation: portrait),
-(hover: none) and (max-width: 896px) and (orientation: landscape) {
-  input[type="text"] {
+  (hover: none) and (max-width: 896px) and (orientation: landscape) {
+  input[type='text'] {
     font-size: 1rem;
   }
 }

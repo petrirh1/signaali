@@ -1,11 +1,24 @@
-import React, { useState, useContext } from 'react';
-import ReactMapGL, { Source, Layer, Popup, LinearInterpolator } from 'react-map-gl';
+import React, { useState, useEffect, useContext } from 'react';
 import { ThemeContext } from './ThemeContext';
+import ReactMapGL, { Source, Layer, Popup, LinearInterpolator } from 'react-map-gl';
+import InfoModal from './InfoModal';
 import GeoJSON from 'geojson';
+import PropTypes from 'prop-types';
 import './css/map.css';
 
-const Map = ({ data, component }) => {
+const Map = ({ data, location }) => {
+  const accessToken =
+    'pk.eyJ1IjoicGV0cmlyaDEiLCJhIjoiY2s0aWRpaHFmMWUxYzNubnA2ZmtlYmh2ZCJ9.C46dtWtud1yttEtebVr2dA';
+  const lightTheme = 'mapbox://styles/petrirh1/ck4pnjtrwaodx1cmixukicu6w';
+  const darkTheme = 'mapbox://styles/petrirh1/ck4o4q5ib09541fjzqit8lpy1';
   const [theme] = useContext(ThemeContext);
+  const initialViewport = {
+    latitude: 65.272,
+    longitude: 25.826,
+    zoom: 4,
+    minZoom: 2
+  };
+
   const [popupInfo, setPopupInfo] = useState({
     title: '',
     description: '',
@@ -14,12 +27,21 @@ const Map = ({ data, component }) => {
     longitude: '',
     isVisible: false
   });
-  const [viewport, setViewport] = useState({
-    latitude: 65.272,
-    longitude: 25.826,
-    zoom: 4,
-    minZoom: 2
-  });
+
+  const [viewport, setViewport] = useState(initialViewport);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+
+    if (location.state == null) {
+      setViewport(initialViewport);
+      return;
+    }
+
+    const { lat, long } = location.state;
+    centerTo(lat, long, 12.9, 10);
+    // eslint-disable-next-line
+  }, []);
 
   const geoJSON = GeoJSON.parse(data, {
     Point: ['latitude', 'longitude'],
@@ -35,6 +57,8 @@ const Map = ({ data, component }) => {
   };
 
   const handleClick = ({ features }) => {
+    console.log(features);
+
     if (!features.length) {
       handlePopupClose();
       return;
@@ -58,16 +82,17 @@ const Map = ({ data, component }) => {
     return;
   };
 
-  const handleCursor = ({ isHovering, isDragging }) => {
+  const handleCursor = ({ isHovering }) => {
     return isHovering ? 'pointer' : 'default';
   };
 
-  const centerTo = (latitude, longitude) => {
+  const centerTo = (latitude, longitude, zoom = viewport.zoom, duration = 250) => {
     const loc = {
       ...viewport,
       longitude,
       latitude,
-      transitionDuration: 250,
+      zoom,
+      transitionDuration: duration,
       transitionInterpolator: new LinearInterpolator()
     };
     setViewport(loc);
@@ -76,79 +101,88 @@ const Map = ({ data, component }) => {
   const { title, description, date, latitude, longitude, isVisible } = popupInfo;
 
   return (
-    <ReactMapGL
-      {...viewport}
-      width={'100vw'}
-      height={'100vh'}
-      doubleClickZoom={false}
-      dragRotate={false}
-      onClick={handleClick}
-      getCursor={handleCursor}
-      interactiveLayerIds={['point']}
-      onViewportChange={handleViewportChange}
-      mapboxApiAccessToken='pk.eyJ1IjoicGV0cmlyaDEiLCJhIjoiY2s0aWRpaHFmMWUxYzNubnA2ZmtlYmh2ZCJ9.C46dtWtud1yttEtebVr2dA'
-      mapStyle={
-        theme === 'dark'
-          ? 'mapbox://styles/petrirh1/ck4o4q5ib09541fjzqit8lpy1'
-          : 'mapbox://styles/petrirh1/ck4pnjtrwaodx1cmixukicu6w'
-      }>
-      <Source id='alert' type='geojson' data={geoJSON}>
-        <Layer
-          id='point'
-          type='symbol'
-          layout={{
-            'icon-image': [
-              'match',
-              ['get', 'type'],
-              'palohälytys',
-              'alarm',
-              'tulipalo',
-              'fire',
-              'vahingontorjunta',
-              'nature',
-              'tieliikenneonnettomuus',
-              'car',
-              'vesiliikenneonnettomuus',
-              'boat',
-              'raideliikenneonnettomuus',
-              'train',
-              'ilmaliikenneonnettomuus',
-              'aeroplane',
-              'ensivastetehtävä',
-              'heal',
-              'ihmisen pelastaminen',
-              'people',
-              'eläimen pelastaminen',
-              'pets',
-              'vaarallisen aineen onnettomuus',
-              'warning-2',
-              'öljyvahinko',
-              'oil',
-              'warning'
-            ]
-          }}
-        />
-      </Source>
-      {isVisible && (
-        <Popup
-          tipSize={10}
-          latitude={latitude}
-          longitude={longitude}
-          offsetTop={-12}
-          closeButton={true}
-          closeOnClick={false}
-          dynamicPosition={false}
-          onClose={handlePopupClose}
-          anchor='bottom'>
-          <div>
-            <h3 className='popup-alert-title'>{title}</h3>
-            <p className='popup-alert-description'>{description}</p>
-            <p className='popup-alert-date'>{date}</p>
-          </div>
-        </Popup>
-      )}
-    </ReactMapGL>
+    <>
+      <InfoModal
+        title='Huom!'
+        description='Hälytykset sijoitetaan kartalle ainoastaan
+      paikkakunnan mukaan, joten sijainnit eivät ole tarkkoja.'
+        okText='Sulje'
+      />
+      <ReactMapGL
+        {...viewport}
+        width={'100vw'}
+        height={'100vh'}
+        doubleClickZoom={false}
+        dragRotate={false}
+        onClick={handleClick}
+        getCursor={handleCursor}
+        interactiveLayerIds={['point']}
+        onViewportChange={handleViewportChange}
+        mapboxApiAccessToken={accessToken}
+        mapStyle={theme === 'dark' ? darkTheme : lightTheme}>
+        <Source id='alert' type='geojson' data={geoJSON}>
+          <Layer
+            id='point'
+            type='symbol'
+            layout={{
+              'icon-image': [
+                'match',
+                ['get', 'type'],
+                'palohälytys',
+                'alarm',
+                'tulipalo',
+                'fire',
+                'vahingontorjunta',
+                'nature',
+                'tieliikenneonnettomuus',
+                'car',
+                'vesiliikenneonnettomuus',
+                'boat',
+                'raideliikenneonnettomuus',
+                'train',
+                'ilmaliikenneonnettomuus',
+                'aeroplane',
+                'ensivastetehtävä',
+                'heal',
+                'ihmisen pelastaminen',
+                'people',
+                'eläimen pelastaminen',
+                'pets',
+                'vaarallisen aineen onnettomuus',
+                'warning-2',
+                'öljyvahinko',
+                'oil',
+                'warning'
+              ]
+            }}
+          />
+        </Source>
+        {isVisible && (
+          <Popup
+            tipSize={10}
+            latitude={latitude}
+            longitude={longitude}
+            offsetTop={-12}
+            closeButton={true}
+            closeOnClick={false}
+            dynamicPosition={false}
+            onClose={handlePopupClose}
+            anchor='bottom'>
+            <div>
+              <h3 className='popup-alert-title'>{title}</h3>
+              <p className='popup-alert-description'>{description}</p>
+              <p className='popup-alert-date'>{date}</p>
+            </div>
+          </Popup>
+        )}
+      </ReactMapGL>
+    </>
   );
 };
 
 export default Map;
+
+Map.propTypes = {
+  data: PropTypes.array,
+  location: PropTypes.object
+};

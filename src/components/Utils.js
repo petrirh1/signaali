@@ -2,7 +2,6 @@ import { coordinates } from './Coordinates';
 const locations = [];
 
 export const parseData = item => {
-  console.log(item);
   const newItem = item.map(v => ({
     title: removeWordsAfterSlash(v.title[0])[0],
     type: setAlertType(v.title[0]),

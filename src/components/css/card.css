@@ -6,16 +6,33 @@
   background: white;
   border-radius: 3px;
   overflow: hidden;
-  transition: all 0.15s ease;
+  transition: all 0.1s ease;
   display: grid;
   grid-template-columns: 1fr 4fr;
   grid-template-areas: '.' '.';
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-.alert-card:hover {
+.alert-card:active {
   border-radius: 3px;
-  border: 1px solid #3eb2ff;
+  border: 1px solid #4e92d7;
+  transition: all 0s;
+}
+
+.alert-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  background: rgba(49, 76, 228, 0.028);
+  transition: opacity 0.2s ease;
+}
+
+.alert-card:active::after {
+  opacity: 1;
 }
 
 .alert-card i {
@@ -30,13 +47,12 @@
 }
 
 .content-wrapper {
-  padding: 8px;
+  padding-left: 5px;
   text-align: left;
   margin: auto auto;
   width: calc(100% - 10px);
 }
 
-.alert-card .card-title,
 .alert-card .card-description,
 .alert-card .card-date {
   margin: 0px;
@@ -81,4 +97,15 @@ html[data-theme='dark'] .alert-card .card-title {
 html[data-theme='dark'] .alert-card .card-description,
 html[data-theme='dark'] .alert-card .card-date {
   color: #83858a;
+}
+
+@media all and (hover: hover) {
+  .alert-card:hover {
+    border-radius: 3px;
+    border: 1px solid #4e92d7;
+  }
+
+  .alert-card:hover::after {
+    opacity: 1;
+  }
 }

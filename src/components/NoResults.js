@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './css/no-results.css';
 
 const NoResults = ({ dataLen }) => {
@@ -15,3 +16,7 @@ const NoResults = ({ dataLen }) => {
 };
 
 export default NoResults;
+
+NoResults.propTypes = {
+  dataLen: PropTypes.number
+};

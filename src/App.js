@@ -51,8 +51,9 @@ function App() {
               path='/'
               exact
               strict
-              render={() => (
+              render={props => (
                 <Home
+                  {...props}
                   userFilter={userFilter}
                   data={data}
                   filtered={filtered}
@@ -60,7 +61,7 @@ function App() {
                 />
               )}
             />
-            <Route path='/kartta' exact strict render={() => <Map data={data} />} />
+            <Route path='/kartta' exact strict render={props => <Map {...props} data={data} />} />
             <Route component={NoMatch} />
           </Switch>
         </div>
