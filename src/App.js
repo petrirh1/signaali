@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import ReactGA from 'react-ga';
 import axios from 'axios';
 import Header from './components/Header';
-import Map from './components/Map';
-import Home from './components/Home';
+// import Map from './components/Map';
+// import Home from './components/Home';
 import NoMatch from './components/NoMatch';
 import { ThemeProvider } from './components/ThemeContext';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { parseData } from './components/Utils';
 import './App.css';
+
+const Home = lazy(() => import('./components/Home'));
+const Map = lazy(() => import('./components/Map'));
 
 function App() {
   const [data, setData] = useState([]);
@@ -46,24 +49,26 @@ function App() {
       <Router>
         <div className='App'>
           <Header />
-          <Switch>
-            <Route
-              path='/'
-              exact
-              strict
-              render={props => (
-                <Home
-                  {...props}
-                  userFilter={userFilter}
-                  data={data}
-                  filtered={filtered}
-                  isLoading={isLoading}
-                />
-              )}
-            />
-            <Route path='/kartta' exact strict render={props => <Map {...props} data={data} />} />
-            <Route component={NoMatch} />
-          </Switch>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Switch>
+              <Route
+                path='/'
+                exact
+                strict
+                render={props => (
+                  <Home
+                    {...props}
+                    userFilter={userFilter}
+                    data={data}
+                    filtered={filtered}
+                    isLoading={isLoading}
+                  />
+                )}
+              />
+              <Route path='/kartta' exact strict render={props => <Map {...props} data={data} />} />
+              <Route component={NoMatch} />
+            </Switch>
+          </Suspense>
         </div>
       </Router>
     </ThemeProvider>
