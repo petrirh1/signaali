@@ -9,7 +9,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { parseData } from './components/Utils';
 import './App.css';
 
-// const Home = lazy(() => import('./components/Home'));
 const Map = lazy(() => import('./components/Map'));
 
 function App() {
@@ -48,26 +47,26 @@ function App() {
       <Router>
         <div className='App'>
           <Header />
-          <Suspense fallback={<div>Loading...</div>}>
-            <Switch>
-              <Route
-                path='/'
-                exact
-                strict
-                render={props => (
-                  <Home
-                    {...props}
-                    userFilter={userFilter}
-                    data={data}
-                    filtered={filtered}
-                    isLoading={isLoading}
-                  />
-                )}
-              />
+          <Switch>
+            <Route
+              path='/'
+              exact
+              strict
+              render={props => (
+                <Home
+                  {...props}
+                  userFilter={userFilter}
+                  data={data}
+                  filtered={filtered}
+                  isLoading={isLoading}
+                />
+              )}
+            />
+            <Suspense fallback={<div>Loading...</div>}>
               <Route path='/kartta' exact strict render={props => <Map {...props} data={data} />} />
-              <Route component={NoMatch} />
-            </Switch>
-          </Suspense>
+            </Suspense>
+            <Route component={NoMatch} />
+          </Switch>
         </div>
       </Router>
     </ThemeProvider>
