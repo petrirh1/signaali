@@ -57,8 +57,6 @@ const Map = ({ data, location }) => {
   };
 
   const handleClick = ({ features }) => {
-    console.log(features);
-
     if (!features.length) {
       handlePopupClose();
       return;
