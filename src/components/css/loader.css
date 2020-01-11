@@ -1,30 +1,30 @@
 .skeleton-container {
-    padding: 10px 30px 10px 5px;
-    border-radius: 3px;
-    display: flex;
-    flex-direction: column;
+  padding: 10px 30px 10px 5px;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
 }
 
 .skeleton-container .skeleton-content {
-    font-size: 14px;
-    display: grid;
-    grid-template-columns: 0.9fr 4fr;
-    grid-template-areas: "." ".";
-    column-gap: 1.5rem;
+  font-size: 14px;
+  display: grid;
+  grid-template-columns: 0.9fr 4fr;
+  grid-template-areas: '.' '.';
+  column-gap: 1.5rem;
 }
 
 .skeleton-container .skeleton-icon--placeholder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3px;
 }
 
 .skeleton-container span {
-    font-size: 10px;
-    border-radius: 25px;
+  font-size: 10px;
+  border-radius: 25px;
 }
 
 .skeleton-container span:nth-child(2) {
-    margin: 10px 0 10px 0;
+  margin: 10px 0 10px 0;
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BackTop } from 'antd';
+import BackTop from 'antd/es/back-top';
 import SearchForm from '../components/SearchForm';
 import Card from '../components/Card';
 import Loader from '../components/Loader';
