@@ -1,20 +1,26 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from './ThemeContext';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { useMediaPredicate } from 'react-media-hook';
+import Tooltip from 'antd/es/tooltip';
 import './css/header.css';
 
 const Header = () => {
   const [theme, setTheme] = useContext(ThemeContext);
   const maxWidth500 = useMediaPredicate('(max-width: 500px)');
+  const isMobile = useMediaPredicate('(hover: none)');
 
   return (
     <header className='header'>
-      <img
-        className='app-logo'
-        src={require(theme === 'dark' ? './icons/app-logo-dark.svg' : './icons/app-logo-light.svg')}
-        alt=''
-      />
+      <Link exact to='/'>
+        <img
+          className='app-logo'
+          src={require(theme === 'dark'
+            ? './icons/app-logo-dark.svg'
+            : './icons/app-logo-light.svg')}
+          alt=''
+        />
+      </Link>
       <div className='header-container'>
         <nav className='header-nav'>
           <ul className='header-nav-links'>
@@ -32,13 +38,19 @@ const Header = () => {
             </NavLink>
           </ul>
         </nav>
-        <div className='theme-toggle-btn'>
-          <i
-            className='material-icons-round'
-            onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
-            invert_colors
-          </i>
-        </div>
+        <Tooltip
+          overlayStyle={isMobile ? { display: 'none' } : null}
+          mouseLeaveDelay={0}
+          placement='bottomRight'
+          title='Vaihda teema'>
+          <div className='theme-toggle-btn'>
+            <i
+              className='material-icons-round'
+              onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
+              invert_colors
+            </i>
+          </div>
+        </Tooltip>
       </div>
     </header>
   );
