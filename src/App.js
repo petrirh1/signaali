@@ -45,29 +45,29 @@ function App() {
   return (
     <ThemeProvider>
       <Router>
-        <div className='App'>
-          <Header />
-          <Switch>
-            <Route
-              path='/'
-              exact
-              strict
-              render={props => (
-                <Home
-                  {...props}
-                  userFilter={userFilter}
-                  data={data}
-                  filtered={filtered}
-                  isLoading={isLoading}
-                />
-              )}
-            />
-            <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div>Ladataan...</div>}>
+          <div className='App'>
+            <Header />
+            <Switch>
+              <Route
+                path='/'
+                exact
+                strict
+                render={props => (
+                  <Home
+                    {...props}
+                    userFilter={userFilter}
+                    data={data}
+                    filtered={filtered}
+                    isLoading={isLoading}
+                  />
+                )}
+              />
               <Route path='/kartta' exact strict render={props => <Map {...props} data={data} />} />
-            </Suspense>
-            <Route component={NoMatch} />
-          </Switch>
-        </div>
+              <Route component={NoMatch} />
+            </Switch>
+          </div>
+        </Suspense>
       </Router>
     </ThemeProvider>
   );
