@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import './css/no-results.css';
 
 const NoResults = ({ dataLen, isLoading }) => {
-  console.log(isLoading);
   return (
     <div className='no-results-container'>
       <i className='material-icons-round' style={{ fontSize: '48px' }}>
