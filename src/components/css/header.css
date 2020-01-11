@@ -87,6 +87,21 @@ i.material-icons-round {
   color: #62686d !important;
 }
 
+.ant-tooltip-placement-bottomRight {
+  padding-top: 15px !important;
+}
+
+.ant-tooltip-inner {
+  background: #67696e !important;
+  font-size: 0.75rem;
+  pointer-events: none;
+  border-radius: 3px !important;
+}
+
+.ant-tooltip-arrow {
+  display: none !important;
+}
+
 html[data-theme='dark'] .header {
   background: #111113;
 }
