@@ -21,6 +21,10 @@ html[data-theme='dark'] body {
   background: #35363a;
 }
 
+html[data-theme='light'] body {
+  background: #e4e4e4;
+}
+
 body {
   height: 100vh;
   min-width: 320px;
