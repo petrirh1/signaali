@@ -9,13 +9,13 @@ import PropTypes from 'prop-types';
 const Home = ({ userFilter, data, filtered, isLoading }) => {
   return (
     <div>
-      <BackTop style={{ right: '2rem', bottom: '2rem' }} />
+      <BackTop visibilityHeight={2000} style={{ right: '2rem', bottom: '2rem' }} />
       <SearchForm userFilter={userFilter} data={filtered} />
       <div className='content-container'>
         {isLoading
           ? [...new Array(100)].map((d, i) => <Loader data={d} key={i} />)
           : filtered.map((data, index) => <Card data={data} key={index} />)}
-        {filtered.length < 1 ? <NoResults dataLen={data.length} /> : null}
+        {filtered.length < 1 ? <NoResults dataLen={data.length} isLoading={isLoading} /> : null}
       </div>
     </div>
   );
