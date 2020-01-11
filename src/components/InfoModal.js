@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Modal } from 'antd';
+import PropTypes from 'prop-types';
 import 'antd/dist/antd.css';
 import './css/info-modal.css';
 
@@ -35,3 +36,9 @@ const InfoModal = ({ title, description, okText }) => {
 };
 
 export default InfoModal;
+
+InfoModal.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+  okText: PropTypes.string
+};
