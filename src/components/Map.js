@@ -4,6 +4,7 @@ import ReactMapGL, { Source, Layer, Popup, LinearInterpolator } from 'react-map-
 import InfoModal from './InfoModal';
 import GeoJSON from 'geojson';
 import PropTypes from 'prop-types';
+import Spinner from './Spinner';
 import './css/map.css';
 
 const Map = ({ data, location }) => {
@@ -12,13 +13,13 @@ const Map = ({ data, location }) => {
   const lightTheme = 'mapbox://styles/petrirh1/ck4pnjtrwaodx1cmixukicu6w';
   const darkTheme = 'mapbox://styles/petrirh1/ck4o4q5ib09541fjzqit8lpy1';
   const [theme] = useContext(ThemeContext);
+  const [isLoading, setLoading] = useState(true);
   const initialViewport = {
     latitude: 65.272,
     longitude: 25.826,
     zoom: 4,
     minZoom: 2
   };
-
   const [popupInfo, setPopupInfo] = useState({
     title: '',
     description: '',
@@ -27,7 +28,6 @@ const Map = ({ data, location }) => {
     longitude: '',
     isVisible: false
   });
-
   const [viewport, setViewport] = useState(initialViewport);
 
   useEffect(() => {
@@ -47,6 +47,14 @@ const Map = ({ data, location }) => {
     Point: ['latitude', 'longitude'],
     include: ['title', 'type', 'description', 'date', 'latitude', 'longitude']
   });
+
+  const handleLoading = () => {
+    setLoading(false);
+  };
+
+  const handleCursor = ({ isHovering }) => {
+    return isHovering ? 'pointer' : 'default';
+  };
 
   const handleViewportChange = viewport => {
     setViewport(viewport);
@@ -80,10 +88,6 @@ const Map = ({ data, location }) => {
     return;
   };
 
-  const handleCursor = ({ isHovering }) => {
-    return isHovering ? 'pointer' : 'default';
-  };
-
   const centerTo = (latitude, longitude, zoom = viewport.zoom, duration = 250) => {
     const loc = {
       ...viewport,
@@ -103,11 +107,13 @@ const Map = ({ data, location }) => {
       <InfoModal
         title='Huom!'
         description='Hälytykset sijoitetaan kartalle ainoastaan
-      paikkakunnan mukaan, joten sijainnit eivät ole tarkkoja.'
+        paikkakunnan mukaan, joten sijainnit eivät ole tarkkoja.'
         okText='Sulje'
       />
+      <Spinner isLoading={isLoading} />
       <ReactMapGL
         {...viewport}
+        onLoad={handleLoading}
         width={'100vw'}
         height={'100vh'}
         doubleClickZoom={false}

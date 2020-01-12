@@ -1,7 +1,8 @@
 import React from 'react';
-import './css/loading-spinner.css';
+import PropTypes from 'prop-types';
+import './css/spinner.css';
 
-const LoadingSpinner = ({ isLoading }) => {
+const Spinner = ({ isLoading }) => {
   return (
     <div className='loader-container' style={{ visibility: isLoading ? 'visible' : 'hidden' }}>
       <div className='loader'></div>
@@ -9,4 +10,8 @@ const LoadingSpinner = ({ isLoading }) => {
   );
 };
 
-export default LoadingSpinner;
+export default Spinner;
+
+Spinner.propTypes = {
+  isLoading: PropTypes.bool
+};
