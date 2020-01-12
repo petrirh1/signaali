@@ -5,7 +5,7 @@ import { useMediaPredicate } from 'react-media-hook';
 import Tooltip from 'antd/es/tooltip';
 import './css/header.css';
 
-const Header = () => {
+const Header = ({ isLoading }) => {
   const [theme, setTheme] = useContext(ThemeContext);
   const maxWidth500 = useMediaPredicate('(max-width: 500px)');
   const isMobile = useMediaPredicate('(hover: none)');
@@ -21,7 +21,7 @@ const Header = () => {
           alt=''
         />
       </Link>
-      <div className='header-container'>
+      <div className='header-container' style={{ visibility: isLoading ? 'hidden' : 'visible' }}>
         <nav className='header-nav'>
           <ul className='header-nav-links'>
             <NavLink activeClassName='nav-link-active' exact to='/'>
@@ -39,7 +39,7 @@ const Header = () => {
           </ul>
         </nav>
         <Tooltip
-          overlayStyle={isMobile ? { display: 'none' } : null}
+          overlayStyle={{ visibility: isLoading ? 'hidden' : 'visible' }}
           mouseLeaveDelay={0}
           placement='bottomRight'
           title='Vaihda teema'>
