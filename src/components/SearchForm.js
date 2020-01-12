@@ -16,6 +16,7 @@ const SearchForm = ({ userFilter, data }) => {
 
   useEffect(() => {
     handleClear();
+    // eslint-disable-next-line
   }, []);
 
   return (
