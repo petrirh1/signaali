@@ -39,7 +39,7 @@ const Header = ({ isLoading }) => {
           </ul>
         </nav>
         <Tooltip
-          overlayStyle={{ visibility: isLoading ? 'hidden' : 'visible' }}
+          overlayStyle={{ visibility: isMobile ? 'hidden' : 'visible' }}
           mouseLeaveDelay={0}
           placement='bottomRight'
           title='Vaihda teema'>
