@@ -45,9 +45,9 @@ function App() {
   return (
     <ThemeProvider>
       <Router>
-        <Suspense fallback={<div>Ladataan...</div>}>
-          <div className='App'>
-            <Header />
+        <div className='App'>
+          <Header isLoading={isLoading} />
+          <Suspense fallback={<div></div>}>
             <Switch>
               <Route
                 path='/'
@@ -66,8 +66,8 @@ function App() {
               <Route path='/kartta' exact strict render={props => <Map {...props} data={data} />} />
               <Route component={NoMatch} />
             </Switch>
-          </div>
-        </Suspense>
+          </Suspense>
+        </div>
       </Router>
     </ThemeProvider>
   );
