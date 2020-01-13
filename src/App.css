@@ -47,7 +47,7 @@ body {
   justify-content: center;
   grid-template-columns: repeat(auto-fit, 340px);
   grid-auto-rows: minmax(min-content, max-content);
-  grid-gap: 0.8em;
+  grid-gap: 1em;
   grid-auto-flow: dense;
 }
 
