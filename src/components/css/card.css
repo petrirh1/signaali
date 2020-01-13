@@ -58,7 +58,7 @@
 .alert-card .card-description,
 .alert-card .card-date {
   color: #4b4b4b;
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   padding: 0;
   margin: 0;
 }
@@ -67,6 +67,7 @@
   color: #000000;
   text-transform: capitalize;
   margin-bottom: 2px;
+  font-size: 0.875rem;
 }
 
 .card-description::first-letter {
