@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 const Home = ({ userFilter, data, filtered, isLoading }) => {
   return (
     <div>
-      <BackTop visibilityHeight={2000} style={{ right: '2rem', bottom: '2rem' }} />
+      <BackTop style={{ right: '2rem', bottom: '2rem' }} />
       <SearchForm userFilter={userFilter} data={filtered} />
       <div className='content-container'>
         {isLoading
