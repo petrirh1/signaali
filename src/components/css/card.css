@@ -2,14 +2,13 @@
   cursor: pointer;
   border: 1px solid transparent;
   position: relative;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   background: white;
   border-radius: 3px;
   overflow: hidden;
   transition: all 0.1s ease;
   display: grid;
-  grid-template-columns: 1fr 4fr;
-  grid-template-areas: '.' '.';
+  grid-template-columns: 1fr 5fr;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.2);
   font-family: 'Roboto Mono', monospace;
 }
@@ -40,18 +39,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100px;
-  height: cacl(100% - 5px);
-  margin: 3px;
+  margin: 2px;
   border: 1px solid rgba(0, 0, 0, 0.02);
   border-radius: 2px;
 }
 
 .content-wrapper {
-  padding-left: 5px;
+  padding: 8px 6px 8px 6px;
   text-align: left;
-  margin: auto auto;
-  width: calc(100% - 10px);
+  margin: auto 0;
 }
 
 .alert-card .card-description,
@@ -61,14 +57,14 @@
 
 .alert-card .card-description,
 .alert-card .card-date {
-  color: #616161;
+  color: #4b4b4b;
   font-size: 0.8125rem;
   padding: 0;
   margin: 0;
 }
 
 .alert-card .card-title {
-  color: #111111;
+  color: #000000;
   text-transform: capitalize;
   margin-bottom: 2px;
 }
@@ -79,7 +75,6 @@
 
 .alert-card .card-date {
   margin-top: 6px;
-  opacity: 0.65;
 }
 
 html[data-theme='dark'] .alert-card {
@@ -92,12 +87,15 @@ html[data-theme='dark'] .alert-card i {
 }
 
 html[data-theme='dark'] .alert-card .card-title {
-  color: #d3d7db;
+  color: #e1e1e1;
 }
 
-html[data-theme='dark'] .alert-card .card-description,
+html[data-theme='dark'] .alert-card .card-description {
+  color: #9ea1a7;
+}
+
 html[data-theme='dark'] .alert-card .card-date {
-  color: #83858a;
+  color: #818388;
 }
 
 @media all and (hover: hover) {

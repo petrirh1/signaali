@@ -1,16 +1,17 @@
 .skeleton-container {
-  padding: 10px 30px 10px 5px;
+  padding-right: 10px;
+  border-width: 3px;
   border-radius: 3px;
   display: flex;
   flex-direction: column;
+  min-height: 83px;
+  justify-content: center;
 }
 
 .skeleton-container .skeleton-content {
-  font-size: 14px;
+  font-size: 0.8125rem;
   display: grid;
-  grid-template-columns: 0.9fr 4fr;
-  grid-template-areas: '.' '.';
-  column-gap: 1.5rem;
+  grid-template-columns: 1fr 5fr;
 }
 
 .skeleton-container .skeleton-icon--placeholder {
@@ -21,7 +22,7 @@
 }
 
 .skeleton-container span {
-  font-size: 10px;
+  font-size: 8px;
   border-radius: 25px;
 }
 

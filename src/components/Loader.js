@@ -10,7 +10,7 @@ const Loader = ({ data, index }) => {
   let highlightColor = theme === 'dark' ? '#24252a' : '#cccccc';
 
   return (
-    <div className='skeleton-container' style={{ border: `5px solid ${color}` }}>
+    <div className='skeleton-container' style={{ border: `3px solid ${color}` }}>
       <SkeletonTheme color={color} highlightColor={highlightColor}>
         <div className='skeleton-content'>
           <div className='skeleton-icon--placeholder'>
