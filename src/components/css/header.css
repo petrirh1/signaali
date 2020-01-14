@@ -53,10 +53,10 @@
 .nav-link-active li,
 .nav-link-active i {
   position: relative;
-  color: #484c57 !important;
+  color: #58595d !important;
 }
 
-i.material-icons-round {
+.header i.material-icons-round {
   font-size: 1.2rem;
   color: #a2a5a8;
 }
@@ -74,7 +74,7 @@ i.material-icons-round {
   bottom: 0;
   width: calc(100% - 20px);
   height: 3px;
-  background: #55575b;
+  background: #58595d;
   border-radius: 1px;
 }
 
@@ -124,6 +124,10 @@ html[data-theme='dark'] .nav-link-active li::after {
   background: #edf1f4;
 }
 
+html[data-theme='dark'] .header .material-icons-round {
+  color: #67696eed;
+}
+
 @media (hover: hover) {
   html[data-theme='dark'] .header .theme-toggle-btn i:hover {
     color: #edf1f4;
@@ -131,11 +135,11 @@ html[data-theme='dark'] .nav-link-active li::after {
 
   .header-nav-links li:hover,
   .header-nav-links li:hover * {
-    color: #62686d !important;
+    color: #58595d !important;
   }
 
   .header .theme-toggle-btn i:hover {
-    color: #616263;
+    color: #58595d;
   }
 }
 
