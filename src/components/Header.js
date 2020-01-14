@@ -3,6 +3,7 @@ import { ThemeContext } from './ThemeContext';
 import { NavLink, Link } from 'react-router-dom';
 import { useMediaPredicate } from 'react-media-hook';
 import Tooltip from 'antd/es/tooltip';
+import PropTypes from 'prop-types';
 import './css/header.css';
 
 const Header = ({ isLoading }) => {
@@ -57,3 +58,7 @@ const Header = ({ isLoading }) => {
 };
 
 export default Header;
+
+Header.propTypes = {
+  isLoading: PropTypes.bool
+};
