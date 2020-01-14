@@ -21,6 +21,16 @@
   transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55) both;
 }
 
+.loader-label {
+  margin-top: 10px;
+  font-weight: 500;
+  color: #67696e;
+}
+
+html[data-theme='dark'] .loader-label {
+  color: white;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
