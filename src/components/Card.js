@@ -11,7 +11,7 @@ const Card = ({ data }) => {
   const [redirect, setRedirect] = useState(false);
   const [theme] = useContext(ThemeContext);
   const low = theme === 'dark' ? '#888C8F' : '#878787';
-  const medium = theme === 'dark' ? '#FFD160' : '#EBA600';
+  const medium = theme === 'dark' ? '#FFD160' : '#F5AD00';
   const high = theme === 'dark' ? '#FF5F54' : '#FE6D63';
   const lowBG = theme === 'dark' ? '#25262A' : '#F5F5F5';
   const mediumBG = theme === 'dark' ? '#262622' : '#FFF4D9';
