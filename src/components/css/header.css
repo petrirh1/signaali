@@ -82,11 +82,6 @@ i.material-icons-round {
   font-size: 1.25rem;
 }
 
-.header-nav-links li:hover,
-.header-nav-links li:hover * {
-  color: #62686d !important;
-}
-
 .ant-tooltip-placement-bottomRight {
   padding-top: 15px !important;
 }
@@ -132,6 +127,11 @@ html[data-theme='dark'] .nav-link-active li::after {
 @media (hover: hover) {
   html[data-theme='dark'] .header .theme-toggle-btn i:hover {
     color: #edf1f4;
+  }
+
+  .header-nav-links li:hover,
+  .header-nav-links li:hover * {
+    color: #62686d !important;
   }
 
   .header .theme-toggle-btn i:hover {

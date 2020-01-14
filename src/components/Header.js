@@ -40,6 +40,7 @@ const Header = ({ isLoading }) => {
           </ul>
         </nav>
         <Tooltip
+          trigger={isMobile ? 'click' : 'hover'}
           overlayStyle={{ visibility: isMobile ? 'hidden' : 'visible' }}
           mouseLeaveDelay={0}
           placement='bottomRight'
