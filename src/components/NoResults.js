@@ -18,5 +18,6 @@ const NoResults = ({ dataLen, isLoading }) => {
 export default NoResults;
 
 NoResults.propTypes = {
-  dataLen: PropTypes.number
+  dataLen: PropTypes.number,
+  isLoading: PropTypes.bool
 };
