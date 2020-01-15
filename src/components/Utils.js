@@ -56,7 +56,7 @@ const setAlertType = sentence => {
     return 'vahingontorjunta';
   } else if (sentence.includes('tie')) {
     return 'tieliikenneonnettomuus';
-  } else if (sentence.includes('vesi')) {
+  } else if (sentence.includes('vesi') && !sentence.includes('öljy')) {
     return 'vesiliikenneonnettomuus';
   } else if (sentence.includes('raide')) {
     return 'raideliikenneonnettomuus';
