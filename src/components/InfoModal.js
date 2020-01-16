@@ -17,7 +17,7 @@ const InfoModal = ({ title, description, okText }) => {
 
   return (
     <div>
-      <button onClick={showModal} className='info-popup-button'>
+      <button onClick={showModal} className='info-popup-button' tabIndex='0'>
         <i className='material-icons-round'>info</i>
       </button>
       <Modal

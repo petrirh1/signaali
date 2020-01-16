@@ -20,7 +20,7 @@
   transition: all 0.3s ease;
 }
 
-.info-popup-button > i:hover {
+.info-popup-button i:hover {
   color: rgb(59, 59, 59) !important;
   background: rgba(0, 0, 0, 0.082);
 }
@@ -73,13 +73,13 @@
   border: 1px solid #919597;
 }
 
-html[data-theme='dark'] .info-popup-button > i {
+html[data-theme='dark'] .info-popup-button i {
   font-size: 24px;
   color: rgb(216, 216, 216) !important;
   transition: all 0.3s ease;
 }
 
-html[data-theme='dark'] .info-popup-button > i:hover {
+html[data-theme='dark'] .info-popup-button i:hover {
   color: rgb(255, 255, 255) !important;
   background: rgba(255, 255, 255, 0.082);
 }

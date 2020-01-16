@@ -6,7 +6,7 @@ import Loader from '../components/Loader';
 import NoResults from '../components/NoResults';
 import PropTypes from 'prop-types';
 
-const Home = ({ userFilter, data, filtered, isLoading }) => {
+const Home = ({ userFilter, data, filtered, isLoading, hasError }) => {
   return (
     <div>
       <BackTop style={{ right: '2rem', bottom: '2rem' }} />
@@ -15,7 +15,7 @@ const Home = ({ userFilter, data, filtered, isLoading }) => {
         {isLoading
           ? [...new Array(100)].map((d, i) => <Loader data={d} key={i} />)
           : filtered.map((data, index) => <Card data={data} key={index} />)}
-        {filtered.length < 1 ? <NoResults dataLen={data.length} isLoading={isLoading} /> : null}
+        {filtered.length < 1 ? <NoResults hasError={hasError} /> : null}
       </div>
     </div>
   );

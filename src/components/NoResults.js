@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './css/no-results.css';
 
-const NoResults = ({ dataLen, isLoading }) => {
+const NoResults = ({ hasError }) => {
   return (
     <div className='no-results-container'>
       <i className='material-icons-round' style={{ fontSize: '48px' }}>
-        {dataLen > 0 ? 'search' : isLoading ? null : 'warning'}
+        {hasError ? 'warning' : 'search'}
       </i>
       <p className='no-results-description'>
-        {dataLen > 0 ? 'Ei hakutuloksia' : isLoading ? null : 'Hups, jotain meni pieleen...'}
+        {hasError ? 'Hups, jotain meni pieleen...' : 'Ei hakutuloksia'}
       </p>
     </div>
   );
@@ -18,6 +18,6 @@ const NoResults = ({ dataLen, isLoading }) => {
 export default NoResults;
 
 NoResults.propTypes = {
-  dataLen: PropTypes.number,
-  isLoading: PropTypes.bool
+  isLoading: PropTypes.bool,
+  hasError: PropTypes.bool
 };

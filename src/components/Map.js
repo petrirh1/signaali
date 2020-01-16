@@ -4,7 +4,6 @@ import ReactMapGL, { Source, Layer, Popup, LinearInterpolator } from 'react-map-
 import InfoModal from './InfoModal';
 import GeoJSON from 'geojson';
 import PropTypes from 'prop-types';
-import Spinner from './Spinner';
 import './css/map.css';
 
 const Map = ({ data, location }) => {
@@ -47,10 +46,6 @@ const Map = ({ data, location }) => {
     Point: ['latitude', 'longitude'],
     include: ['title', 'type', 'description', 'date', 'latitude', 'longitude']
   });
-
-  const handleLoading = () => {
-    setLoading(false);
-  };
 
   const handleCursor = ({ isHovering }) => {
     return isHovering ? 'pointer' : 'default';
@@ -110,12 +105,11 @@ const Map = ({ data, location }) => {
         paikkakunnan mukaan, joten sijainnit eivät ole tarkkoja.'
         okText='Sulje'
       />
-      <Spinner isLoading={isLoading} />
       <ReactMapGL
         {...viewport}
-        onLoad={handleLoading}
         width={'100vw'}
         height={'100vh'}
+        onError={() => console.log('error!!!')}
         doubleClickZoom={false}
         dragRotate={false}
         onClick={handleClick}

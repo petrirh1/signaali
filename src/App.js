@@ -7,6 +7,7 @@ import Home from './components/Home';
 import { ThemeProvider } from './components/ThemeContext';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { parseData } from './components/Utils';
+import Spinner from './components/Spinner';
 import './App.css';
 
 const Map = lazy(() => import('./components/Map'));
@@ -15,6 +16,7 @@ function App() {
   const [data, setData] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [isLoading, setLoading] = useState(true);
+  const [hasError, setError] = useState(false);
 
   useEffect(() => {
     ReactGA.initialize('UA-155353804-1');
@@ -33,6 +35,14 @@ function App() {
       .finally(() => setLoading(false));
   }, []);
 
+  useEffect(() => {
+    if (data.length < 1) {
+      setError(true);
+    } else {
+      setError(false);
+    }
+  }, [data]);
+
   const userFilter = searchTerm => {
     const newData = [...data];
 
@@ -46,8 +56,8 @@ function App() {
     <ThemeProvider>
       <Router>
         <div className='App'>
-          <Header isLoading={isLoading} />
-          <Suspense fallback={<div></div>}>
+          <Header isLoading={isLoading} hasError={hasError} />
+          <Suspense fallback={<Spinner />}>
             <Switch>
               <Route
                 path='/'
@@ -60,6 +70,7 @@ function App() {
                     data={data}
                     filtered={filtered}
                     isLoading={isLoading}
+                    hasError={hasError}
                   />
                 )}
               />

@@ -29,7 +29,17 @@ const Card = ({ data }) => {
     }
   };
 
-  const handleClick = () => {
+  const handleClick = e => {
+    handleRedirect();
+  };
+
+  const handleKeyPress = e => {
+    if (e.key === 'Enter') {
+      handleRedirect();
+    }
+  };
+
+  const handleRedirect = () => {
     setRedirect(true);
   };
 
@@ -48,7 +58,7 @@ const Card = ({ data }) => {
           }}
         />
       ) : (
-        <div className='alert-card' onClick={handleClick}>
+        <div className='alert-card' onClick={handleClick} onKeyPress={handleClick} tabIndex='0'>
           <i
             className='material-icons-round'
             style={{
