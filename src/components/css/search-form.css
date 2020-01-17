@@ -34,6 +34,7 @@
   max-width: 400px;
   width: 100px;
   flex: 1;
+  transition: background 0.25s ease;
 }
 
 .search-form input[type='text']:focus {
@@ -80,8 +81,7 @@ html[data-theme='dark'] ::placeholder {
 }
 
 @media (hover: hover) {
-  html[data-theme='dark'] .search-form .clear-btn:hover,
-  html[data-theme='dark'] .search-form .clear-btn:focus {
+  html[data-theme='dark'] .search-form .clear-btn:hover {
     background: #67696e;
     border: 2px solid #6c6e74;
   }
@@ -91,8 +91,7 @@ html[data-theme='dark'] ::placeholder {
     border: 2px solid #494b50;
   }
 
-  .search-form .clear-btn:hover,
-  .search-form .clear-btn:focus {
+  .search-form .clear-btn:hover {
     background: #b7b8bb;
     border: 1px solid #acadb3;
   }

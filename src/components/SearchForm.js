@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './css/search-form.css';
 
-const SearchForm = ({ userFilter, data }) => {
+const SearchForm = ({ userFilter, data, isLoading }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleOnChange = value => {
@@ -20,7 +20,7 @@ const SearchForm = ({ userFilter, data }) => {
   }, []);
 
   return (
-    <div className='search-form-container'>
+    <div style={{ visibility: isLoading ? 'hidden' : 'visible' }} className='search-form-container'>
       <div className='search-form'>
         <input
           type='text'

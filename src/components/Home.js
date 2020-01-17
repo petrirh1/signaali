@@ -10,7 +10,7 @@ const Home = ({ userFilter, data, filtered, isLoading, hasError }) => {
   return (
     <div>
       <BackTop style={{ right: '2rem', bottom: '2rem' }} />
-      <SearchForm userFilter={userFilter} data={filtered} />
+      <SearchForm userFilter={userFilter} data={filtered} isLoading={isLoading} />
       <div className='content-container'>
         {isLoading
           ? [...new Array(100)].map((d, i) => <Loader data={d} key={i} />)
