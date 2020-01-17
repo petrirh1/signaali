@@ -34,7 +34,6 @@
   max-width: 400px;
   width: 100px;
   flex: 1;
-  transition: background 0.25s ease;
 }
 
 .search-form input[type='text']:focus {
