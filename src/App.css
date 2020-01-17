@@ -4,12 +4,8 @@
   box-sizing: border-box;
 }
 
-/* *:focus {
-  outline: 1px solid #0080ff;
-} */
-
-.no-transition * {
-  transition: none !important;
+*:focus {
+  outline: none;
 }
 
 ::selection {

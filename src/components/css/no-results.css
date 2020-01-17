@@ -1,25 +1,25 @@
 .no-results-container {
-    align-self: center;
+  align-self: center;
 }
 
 .material-icons-round {
-    color: rgb(163, 163, 163);
-    padding: 10px;
+  color: rgb(163, 163, 163);
+  padding: 10px;
 }
 
 .no-results-description {
-    margin-top: 10px;
-    font-weight: 500;
-    color: #55575B;
+  margin-top: 10px;
+  font-weight: 500;
+  color: #55575b;
 }
 
-html[data-theme="dark"] .material-icons-round {
-    color: gray;
-    padding: 10px;
+html[data-theme='dark'] .material-icons-round {
+  color: gray;
+  padding: 10px;
 }
 
-html[data-theme="dark"] .no-results-description {
-    margin-top: 10px;
-    font-weight: 400;
-    color: rgba(255, 255, 255, 1);
+html[data-theme='dark'] .no-results-description {
+  margin-top: 10px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
 }

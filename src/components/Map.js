@@ -12,7 +12,6 @@ const Map = ({ data, location }) => {
   const lightTheme = 'mapbox://styles/petrirh1/ck4pnjtrwaodx1cmixukicu6w';
   const darkTheme = 'mapbox://styles/petrirh1/ck4o4q5ib09541fjzqit8lpy1';
   const [theme] = useContext(ThemeContext);
-  const [isLoading, setLoading] = useState(true);
   const initialViewport = {
     latitude: 65.272,
     longitude: 25.826,

@@ -58,7 +58,7 @@ const Card = ({ data }) => {
           }}
         />
       ) : (
-        <div className='alert-card' onClick={handleClick} onKeyPress={handleClick} tabIndex='0'>
+        <div className='alert-card' onClick={handleClick} onKeyPress={handleKeyPress} tabIndex='0'>
           <i
             className='material-icons-round'
             style={{
