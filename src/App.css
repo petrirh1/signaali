@@ -4,6 +4,7 @@
   box-sizing: border-box;
 }
 
+/* Im aware that this is bad for accessibility, but im looking for a solution */
 *:focus {
   outline: none;
 }
