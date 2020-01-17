@@ -8,6 +8,10 @@
   outline: none;
 }
 
+.no-transition * {
+  transition: none !important;
+}
+
 ::selection {
   color: white;
   background: #9abcf3;
