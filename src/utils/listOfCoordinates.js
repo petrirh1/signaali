@@ -1,4 +1,4 @@
-export const coordinates = [
+export const listOfCoordinates = [
   {
     municipality: 'Akaa',
     latitude: 61.167408,

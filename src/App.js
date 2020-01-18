@@ -6,7 +6,7 @@ import NoMatch from './components/NoMatch';
 import Home from './components/Home';
 import { ThemeProvider } from './components/ThemeContext';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { parseData } from './components/Utils';
+import parse from './utils/parse';
 import Spinner from './components/Spinner';
 import './App.css';
 
@@ -26,22 +26,36 @@ function App() {
       .get('/api/alerts')
       .then(res => {
         const { item } = res.data.rss.channel[0];
-        const newItem = parseData(item);
+        const newItem = parse(item);
 
         setData(newItem);
         setFiltered(newItem);
       })
-      .catch(err => console.log(err))
+      .catch(err => {
+        console.log(err);
+        setError(true);
+      })
       .finally(() => setLoading(false));
   }, []);
 
+  // outline for accessibility
   useEffect(() => {
-    if (data.length < 1) {
-      setError(true);
-    } else {
-      setError(false);
-    }
-  }, [data]);
+    const addClass = () => {
+      document.body.classList.add('using-mouse');
+    };
+
+    const removeClass = () => {
+      document.body.classList.remove('using-mouse');
+    };
+
+    document.body.addEventListener('mousedown', addClass);
+    document.body.addEventListener('keydown', removeClass);
+
+    return () => {
+      document.body.removeEventListener('mousedown', addClass);
+      document.body.removeEventListener('keydown', removeClass);
+    };
+  }, []);
 
   const userFilter = searchTerm => {
     const newData = [...data];

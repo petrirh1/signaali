@@ -101,14 +101,12 @@ html[data-theme='dark'] .alert-card .card-date {
 }
 
 @media all and (hover: hover) {
-  .alert-card:hover,
-  .alert-card:focus {
+  .alert-card:hover {
     border-radius: 3px;
     border: 1px solid #4e92d7;
   }
 
-  .alert-card:hover::after,
-  .alert-card:focus::after {
+  .alert-card:hover::after {
     opacity: 1;
   }
 }

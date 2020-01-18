@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Modal from 'antd/es/modal';
 import PropTypes from 'prop-types';
+import Modal from 'antd/es/modal';
 import 'antd/dist/antd.css';
 import './css/info-modal.css';
 

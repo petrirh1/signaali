@@ -1,12 +1,15 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { ThemeContext } from './ThemeContext';
 import ReactMapGL, { Source, Layer, Popup, LinearInterpolator } from 'react-map-gl';
+import { ThemeContext } from './ThemeContext';
 import InfoModal from './InfoModal';
 import GeoJSON from 'geojson';
 import PropTypes from 'prop-types';
+import Spinner from './Spinner';
 import './css/map.css';
 
 const Map = ({ data, location }) => {
+  document.title = 'Signaali - Kartta';
+
   const accessToken =
     'pk.eyJ1IjoicGV0cmlyaDEiLCJhIjoiY2s0aWRpaHFmMWUxYzNubnA2ZmtlYmh2ZCJ9.C46dtWtud1yttEtebVr2dA';
   const lightTheme = 'mapbox://styles/petrirh1/ck4pnjtrwaodx1cmixukicu6w';
@@ -108,7 +111,7 @@ const Map = ({ data, location }) => {
         {...viewport}
         width={'100vw'}
         height={'100vh'}
-        onError={() => console.log('error!!!')}
+        onLoad={() => console.log('loading')}
         doubleClickZoom={false}
         dragRotate={false}
         onClick={handleClick}

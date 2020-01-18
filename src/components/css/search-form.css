@@ -46,9 +46,9 @@
   margin-left: 10px;
   background: #cacbcd;
   color: #494949;
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   transition: background 0.15s ease-in, border 0.15s ease-in;
-  border: 1px solid #babcc0;
+  border: 1px solid #b3b5b9;
   cursor: pointer;
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.01), 0 1px 2px rgba(0, 0, 0, 0.05);
 }

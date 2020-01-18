@@ -2,14 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './css/no-results.css';
 
-const NoResults = ({ hasError }) => {
+const NoResults = ({ isLoading, hasError }) => {
   return (
     <div className='no-results-container'>
       <i className='material-icons-round' style={{ fontSize: '48px' }}>
-        {hasError ? 'warning' : 'search'}
+        {hasError && !isLoading ? 'warning' : isLoading ? null : 'search'}
       </i>
       <p className='no-results-description'>
-        {hasError ? 'Hups, jotain meni pieleen...' : 'Ei hakutuloksia'}
+        {hasError && !isLoading
+          ? 'Hups, jotain meni pieleen...'
+          : isLoading
+          ? null
+          : 'Ei hakutuloksia'}
       </p>
     </div>
   );

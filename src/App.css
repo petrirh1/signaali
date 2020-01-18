@@ -4,8 +4,11 @@
   box-sizing: border-box;
 }
 
-/* Im aware that this is bad for accessibility, but im looking for a solution */
-*:focus {
+:focus {
+  outline: 1px solid #4e92d7;
+}
+
+body.using-mouse :focus {
   outline: none;
 }
 

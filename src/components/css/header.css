@@ -24,7 +24,11 @@
 
 .header .material-icons-round {
   font-size: 1.25rem;
-  color: #a2a5a8;
+}
+
+.header .header-nav-links li,
+.header .material-icons-round {
+  color: #8d9097;
 }
 
 .header .header-error-icon {
@@ -66,7 +70,6 @@
   list-style: none;
   padding-right: 10px;
   cursor: pointer;
-  color: #a2a5a8;
   display: flex;
   align-items: center;
   height: 60px;
@@ -129,10 +132,6 @@ html[data-theme='dark'] .header .theme-toggle-btn {
   cursor: pointer;
 }
 
-html[data-theme='dark'] .header .header-nav-links li {
-  color: #a2a5a8c7;
-}
-
 html[data-theme='dark'] .header .nav-link-active li,
 html[data-theme='dark'] .header .nav-link-active i {
   color: #edf1f4 !important;
@@ -142,8 +141,9 @@ html[data-theme='dark'] .header .nav-link-active li::after {
   background: #edf1f4;
 }
 
+html[data-theme='dark'] .header .header-nav-links li,
 html[data-theme='dark'] .header .material-icons-round {
-  color: #67696eed;
+  color: #81848b;
 }
 
 @media (hover: hover) {
@@ -181,6 +181,14 @@ html[data-theme='dark'] .header .material-icons-round {
 @media (hover: none) {
   .header .material-icons-round {
     font-size: 1.375rem;
+  }
+
+  html[data-theme='dark'] .header .theme-toggle-btn i:active {
+    color: #edf1f4;
+  }
+
+  .header .theme-toggle-btn i:active {
+    color: #58595d;
   }
 }
 

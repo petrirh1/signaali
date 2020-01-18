@@ -1,8 +1,8 @@
 import React, { useState, useContext } from 'react';
+import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import { ThemeContext } from './ThemeContext';
-import PropTypes from 'prop-types';
-import { setIcon } from './Utils';
+import setIcon from '../utils/icon';
 import 'antd/dist/antd.css';
 import './css/card.css';
 

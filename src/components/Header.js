@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
+import Tooltip from 'antd/es/tooltip';
+import PropTypes from 'prop-types';
 import { ThemeContext } from './ThemeContext';
 import { NavLink, Link } from 'react-router-dom';
 import { useMediaPredicate } from 'react-media-hook';
-import Tooltip from 'antd/es/tooltip';
-import PropTypes from 'prop-types';
 import './css/header.css';
 
 const Header = ({ isLoading, hasError }) => {
@@ -27,7 +27,7 @@ const Header = ({ isLoading, hasError }) => {
 
   return (
     <header className='header'>
-      <Link exact to='/'>
+      <Link exact to='/' tabIndex='0'>
         <img
           className='app-logo'
           src={require(theme === 'dark'

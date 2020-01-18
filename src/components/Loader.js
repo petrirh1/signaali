@@ -4,7 +4,7 @@ import { ThemeContext } from './ThemeContext';
 import PropTypes from 'prop-types';
 import './css/loader.css';
 
-const Loader = ({ data, index }) => {
+const Loader = ({ data, index, hasError }) => {
   const [theme] = useContext(ThemeContext);
   let color = theme === 'dark' ? '#2b2c31' : '#d8d8d8';
   let highlightColor = theme === 'dark' ? '#24252a' : '#cccccc';
