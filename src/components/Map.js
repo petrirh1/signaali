@@ -111,7 +111,6 @@ const Map = ({ data, location }) => {
         {...viewport}
         width={'100vw'}
         height={'100vh'}
-        onLoad={() => console.log('loading')}
         doubleClickZoom={false}
         dragRotate={false}
         onClick={handleClick}

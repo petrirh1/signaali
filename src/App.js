@@ -1,11 +1,11 @@
 import React, { useState, useEffect, Suspense, lazy } from 'react';
+import { ThemeProvider } from './components/ThemeContext';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ReactGA from 'react-ga';
 import axios from 'axios';
 import Header from './components/Header';
 import NoMatch from './components/NoMatch';
 import Home from './components/Home';
-import { ThemeProvider } from './components/ThemeContext';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import parse from './utils/parse';
 import Spinner from './components/Spinner';
 import './App.css';
