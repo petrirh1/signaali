@@ -14,6 +14,7 @@ const Map = ({ data, location }) => {
     'pk.eyJ1IjoicGV0cmlyaDEiLCJhIjoiY2s0aWRpaHFmMWUxYzNubnA2ZmtlYmh2ZCJ9.C46dtWtud1yttEtebVr2dA';
   const lightTheme = 'mapbox://styles/petrirh1/ck4pnjtrwaodx1cmixukicu6w';
   const darkTheme = 'mapbox://styles/petrirh1/ck4o4q5ib09541fjzqit8lpy1';
+  const [isLoading, setLoading] = useState(true);
   const [theme] = useContext(ThemeContext);
   const initialViewport = {
     latitude: 65.272,
@@ -107,10 +108,12 @@ const Map = ({ data, location }) => {
         paikkakunnan mukaan, joten sijainnit eivät ole tarkkoja.'
         okText='Sulje'
       />
+      <Spinner isVisible={isLoading} />
       <ReactMapGL
         {...viewport}
         width={'100vw'}
         height={'100vh'}
+        onLoad={() => setLoading(false)}
         doubleClickZoom={false}
         dragRotate={false}
         onClick={handleClick}

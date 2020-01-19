@@ -1,9 +1,9 @@
 import React from 'react';
 import './css/spinner.css';
 
-const Spinner = () => {
+const Spinner = ({ isVisible = true }) => {
   return (
-    <div className='loader-container'>
+    <div style={{ visibility: isVisible ? 'visible' : 'hidden' }} className='loader-container'>
       <div className='loader'></div>
       <p className='loader-label'>Ladataan..</p>
     </div>
