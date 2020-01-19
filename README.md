@@ -4,7 +4,7 @@
 
 Lists 100 latest emergency service alerts from Finland in realtime.
 
-![alt tag](https://i.imgur.com/9IgyYbM.png "this is just a screenshot")
+![alt tag](https://i.imgur.com/OmhIYEz.png "this is just a screenshot")
 
 ## Installation
 
