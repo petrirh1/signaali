@@ -37,6 +37,8 @@ body {
   justify-content: center;
   background: #e4e4e4;
   font-family: 'Roboto Mono', monospace, Sans-Serif;
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
 }
 
 .App {

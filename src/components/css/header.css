@@ -198,6 +198,13 @@ html[data-theme='dark'] .header .material-icons-round {
   }
 }
 
+@media (hover: none) and (orientation: landscape) {
+  .header {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+}
+
 @media all and (max-width: 500px) {
   .header .header-nav-links li {
     padding: 10px;
