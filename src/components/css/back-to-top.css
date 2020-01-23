@@ -1,0 +1,30 @@
+.ant-back-top {
+  right: 2rem;
+  bottom: 2rem;
+}
+
+.ant-back-top-inner {
+  width: 40px;
+  height: 40px;
+  background: rgba(103, 105, 110, 0.85);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
+  transition: background 0.5s ease;
+}
+
+.ant-back-top-inner:hover {
+  background: #55575d;
+}
+
+html[data-theme='dark'] .ant-back-top-inner:hover {
+  background: #7b7f87;
+}
+
+.ant-back-top .material-icons-round {
+  padding: 0 !important;
+  color: rgb(255, 255, 255) !important;
+  font-size: 1.25rem;
+}
