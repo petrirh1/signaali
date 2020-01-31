@@ -30,7 +30,7 @@ const Map = ({ data, location }) => {
 		'pk.eyJ1IjoicGV0cmlyaDEiLCJhIjoiY2s0aWRpaHFmMWUxYzNubnA2ZmtlYmh2ZCJ9.C46dtWtud1yttEtebVr2dA';
 	const lightTheme = 'mapbox://styles/petrirh1/ck4pnjtrwaodx1cmixukicu6w';
 	const darkTheme = 'mapbox://styles/petrirh1/ck4o4q5ib09541fjzqit8lpy1';
-	const transitionDuration = 200;
+	const transitionDuration = 145;
 	const [transitionHasEnded, setTransitionEnded] = useState(false);
 	const [isLoading, setLoading] = useState(true);
 	const [theme] = useContext(ThemeContext);
@@ -59,8 +59,6 @@ const Map = ({ data, location }) => {
 		Point: ['latitude', 'longitude'],
 		include: ['title', 'type', 'severity', 'description', 'date', 'latitude', 'longitude']
 	});
-
-	console.log(geoJSON); // DELETE!!!!!!!!!!!
 
 	const handleCursor = ({ isHovering }) => {
 		return isHovering ? 'pointer' : 'default';
@@ -148,6 +146,7 @@ const Map = ({ data, location }) => {
 				getCursor={handleCursor}
 				onTransitionStart={() => handleTransition(false)}
 				onTransitionEnd={() => handleTransition(true)}
+				clickRadius={2}
 				interactiveLayerIds={['point']}
 				onViewportChange={handleViewportChange}
 				mapboxApiAccessToken={accessToken}
@@ -190,24 +189,26 @@ const Map = ({ data, location }) => {
 					/>
 				</Source>
 				(
-				<Fade show={isVisible}>
-					<Popup
-						tipSize={7}
-						latitude={latitude || 0}
-						longitude={longitude || 0}
-						offsetTop={-13}
-						closeButton={true}
-						closeOnClick={false}
-						dynamicPosition={false}
-						onClose={handlePopupClose}
-						anchor='bottom'>
-						<div>
-							<h3 className='popup-alert-title'>{title}</h3>
-							<p className='popup-alert-description'>{description}</p>
-							<p className='popup-alert-date'>{date}</p>
-						</div>
-					</Popup>
-				</Fade>
+				{
+					<Fade show={isVisible}>
+						<Popup
+							tipSize={7}
+							latitude={latitude || 0}
+							longitude={longitude || 0}
+							offsetTop={-13}
+							closeButton={true}
+							closeOnClick={false}
+							dynamicPosition={false}
+							onClose={handlePopupClose}
+							anchor='bottom'>
+							<div>
+								<h3 className='popup-alert-title'>{title}</h3>
+								<p className='popup-alert-description'>{description}</p>
+								<p className='popup-alert-date'>{date}</p>
+							</div>
+						</Popup>
+					</Fade>
+				}
 				)
 			</ReactMapGL>
 		</>

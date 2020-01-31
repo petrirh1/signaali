@@ -1,95 +1,95 @@
 .info-popup-button {
-  position: absolute;
-  top: 65px;
-  left: 5px;
-  z-index: 1;
-  padding: 0;
-  background: transparent;
-  border: none;
-  cursor: pointer;
+	position: absolute;
+	top: 65px;
+	left: 5px;
+	z-index: 1;
+	padding: 0;
+	background: transparent;
+	border: none;
+	cursor: pointer;
 }
 
 .info-popup-button .material-icons-round {
-  padding: 7px !important;
+	padding: 7px !important;
 }
 
 .info-popup-button > i {
-  font-size: 24px;
-  color: rgb(85, 85, 85) !important;
-  border-radius: 50%;
-  transition: all 0.3s ease;
+	font-size: 24px;
+	color: rgb(48, 48, 48) !important;
+	border-radius: 50%;
+	transition: all 0.3s ease;
 }
 
 .info-popup-button i:hover {
-  color: rgb(59, 59, 59) !important;
-  background: rgba(0, 0, 0, 0.082);
+	color: rgb(17, 17, 17) !important;
+	background: rgba(0, 0, 0, 0.082);
 }
 
 .ant-modal {
-  max-width: 90vw;
+	max-width: 90vw;
 }
 
 .ant-modal-header {
-  font-weight: 500;
-  border-bottom: 0;
-  color: #111111;
+	font-weight: 500;
+	border-bottom: 0;
+	color: #111111;
 }
 
 .ant-modal-body {
-  padding-top: 5px;
-  padding-bottom: 10px;
-  font-size: 0.8125rem;
+	padding-top: 5px;
+	padding-bottom: 10px;
+	font-size: 0.8125rem;
 }
 
 .ant-modal-body p {
-  color: #616161;
-  margin: 0;
+	color: #616161;
+	margin: 0;
 }
 
 .ant-modal-footer {
-  padding-top: 20px;
-  border-top: 0;
+	padding-top: 20px;
+	border-top: 0;
 }
 
 .ant-modal-footer .ant-btn-primary {
-  text-shadow: none;
-  background: #cacbcd;
-  color: #494949;
-  padding: 7px 15px;
-  font-size: 0.75rem;
-  border-radius: 3px;
-  font-weight: 500;
-  border: 1px solid #babcc0;
-  box-shadow: none;
+	text-shadow: none;
+	background: #cacbcd;
+	color: #494949;
+	padding: 7px 15px;
+	font-size: 0.75rem;
+	border-radius: 3px;
+	font-weight: 500;
+	border: 1px solid #babcc0;
+	box-shadow: none;
 }
 
 .ant-modal-footer .ant-btn-primary:hover {
-  background: #b7b8bb;
-  border: 1px solid #acadb3;
+	background: #b7b8bb;
+	border: 1px solid #acadb3;
 }
 
 .ant-modal-footer .ant-btn-primary:active {
-  background: #989c9e;
-  border: 1px solid #919597;
+	background: #989c9e;
+	border: 1px solid #919597;
 }
 
 html[data-theme='dark'] .info-popup-button i {
-  font-size: 24px;
-  color: rgb(216, 216, 216) !important;
-  transition: all 0.3s ease;
+	font-size: 24px;
+	color: rgb(216, 216, 216) !important;
+	transition: all 0.3s ease;
 }
 
 html[data-theme='dark'] .info-popup-button i:hover {
-  color: rgb(255, 255, 255) !important;
-  background: rgba(255, 255, 255, 0.082);
+	color: rgb(255, 255, 255) !important;
+	background: rgba(255, 255, 255, 0.082);
 }
 
 @media (hover: none) and (orientation: landscape) {
-  .info-popup-button {
-    left: env(safe-area-inset-left);
-  }
+	.info-popup-button {
+		left: env(safe-area-inset-left);
+	}
 
-  .mapboxgl-ctrl {
-    margin-left: env(safe-area-inset-left) !important;
-  }
+	.mapboxgl-ctrl {
+		margin-left: env(safe-area-inset-left) !important;
+	}
 }

@@ -1,6 +1,6 @@
 .mapboxgl-popup {
 	max-width: 400px;
-	transition-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.335) both;
+	transition-timing-function: ease-in-out;
 }
 
 .mapboxgl-popup-content {
