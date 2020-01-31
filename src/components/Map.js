@@ -5,186 +5,218 @@ import InfoModal from './InfoModal';
 import GeoJSON from 'geojson';
 import PropTypes from 'prop-types';
 import Spinner from './Spinner';
+import Fade from './Fade';
 import './css/map.css';
 
 const Map = ({ data, location }) => {
-  document.title = 'Signaali - Kartta';
+	document.title = 'Signaali - Kartta';
 
-  const accessToken =
-    'pk.eyJ1IjoicGV0cmlyaDEiLCJhIjoiY2s0aWRpaHFmMWUxYzNubnA2ZmtlYmh2ZCJ9.C46dtWtud1yttEtebVr2dA';
-  const lightTheme = 'mapbox://styles/petrirh1/ck4pnjtrwaodx1cmixukicu6w';
-  const darkTheme = 'mapbox://styles/petrirh1/ck4o4q5ib09541fjzqit8lpy1';
-  const [isLoading, setLoading] = useState(true);
-  const [theme] = useContext(ThemeContext);
-  const initialViewport = {
-    latitude: 65.272,
-    longitude: 25.826,
-    zoom: 4,
-    minZoom: 2
-  };
-  const [popupInfo, setPopupInfo] = useState({
-    title: '',
-    description: '',
-    date: '',
-    latitude: '',
-    longitude: '',
-    isVisible: false
-  });
-  const [viewport, setViewport] = useState(initialViewport);
+	const initialViewport = {
+		latitude: 65.272,
+		longitude: 25.826,
+		zoom: 4,
+		minZoom: 2
+	};
+	const initialPopupInfo = {
+		title: '',
+		description: '',
+		date: '',
+		latitude: '',
+		longitude: '',
+		isVisible: false
+	};
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
+	const accessToken =
+		'pk.eyJ1IjoicGV0cmlyaDEiLCJhIjoiY2s0aWRpaHFmMWUxYzNubnA2ZmtlYmh2ZCJ9.C46dtWtud1yttEtebVr2dA';
+	const lightTheme = 'mapbox://styles/petrirh1/ck4pnjtrwaodx1cmixukicu6w';
+	const darkTheme = 'mapbox://styles/petrirh1/ck4o4q5ib09541fjzqit8lpy1';
+	const transitionDuration = 200;
+	const [transitionHasEnded, setTransitionEnded] = useState(false);
+	const [isLoading, setLoading] = useState(true);
+	const [theme] = useContext(ThemeContext);
+	const [popupInfo, setPopupInfo] = useState(initialPopupInfo);
+	const [viewport, setViewport] = useState(initialViewport);
 
-    if (location.state == null) {
-      setViewport(initialViewport);
-      return;
-    }
+	useEffect(() => {
+		window.scrollTo(0, 0);
 
-    const { lat, long } = location.state;
-    centerTo(lat, long, 12.9, 10);
-    // eslint-disable-next-line
-  }, []);
+		if (location.state == null) {
+			setViewport(initialViewport);
+			return;
+		}
 
-  const geoJSON = GeoJSON.parse(data, {
-    Point: ['latitude', 'longitude'],
-    include: ['title', 'type', 'description', 'date', 'latitude', 'longitude']
-  });
+		const { latitude, longitude } = location.state.data;
+		setPopupInfo({ ...location.state.data, isVisible: true });
+		centerTo(latitude, longitude, 14.2, 0);
 
-  const handleCursor = ({ isHovering }) => {
-    return isHovering ? 'pointer' : 'default';
-  };
+		// reset map view on browser refresh when location.state not null
+		window.history.replaceState(null, null, location.state.path);
 
-  const handleViewportChange = viewport => {
-    setViewport(viewport);
-  };
+		// eslint-disable-next-line
+	}, []);
 
-  const handlePopupClose = () => {
-    setPopupInfo({ ...popupInfo, isVisible: false });
-  };
+	const geoJSON = GeoJSON.parse(data, {
+		Point: ['latitude', 'longitude'],
+		include: ['title', 'type', 'severity', 'description', 'date', 'latitude', 'longitude']
+	});
 
-  const handleClick = ({ features }) => {
-    if (!features.length) {
-      handlePopupClose();
-      return;
-    }
+	console.log(geoJSON); // DELETE!!!!!!!!!!!
 
-    const { properties } = features[0];
-    const { title, description, date, latitude, longitude } = properties;
+	const handleCursor = ({ isHovering }) => {
+		return isHovering ? 'pointer' : 'default';
+	};
 
-    if (properties !== undefined && latitude !== undefined && longitude !== undefined) {
-      setPopupInfo({
-        title,
-        description,
-        date,
-        latitude,
-        longitude,
-        isVisible: true
-      });
+	const handleViewportChange = viewport => {
+		setViewport(viewport);
+	};
 
-      centerTo(latitude, longitude);
-    }
-    return;
-  };
+	const handleTransition = bool => {
+		setTransitionEnded(bool);
+	};
 
-  const centerTo = (latitude, longitude, zoom = viewport.zoom, duration = 250) => {
-    const loc = {
-      ...viewport,
-      longitude,
-      latitude,
-      zoom,
-      transitionDuration: duration,
-      transitionInterpolator: new LinearInterpolator()
-    };
-    setViewport(loc);
-  };
+	const handlePopupClose = () => {
+		setPopupInfo({ ...popupInfo, isVisible: false });
+	};
 
-  const { title, description, date, latitude, longitude, isVisible } = popupInfo;
+	const handleClick = ({ features }) => {
+		if (!features.length) {
+			handlePopupClose();
+			return;
+		}
 
-  return (
-    <>
-      <InfoModal
-        title='Huom!'
-        description='Hälytykset sijoitetaan kartalle ainoastaan
-        paikkakunnan mukaan, joten sijainnit eivät ole tarkkoja.'
-        okText='Sulje'
-      />
-      <Spinner isVisible={isLoading} />
-      <ReactMapGL
-        {...viewport}
-        width={'100vw'}
-        height={'100vh'}
-        onLoad={() => setLoading(false)}
-        doubleClickZoom={false}
-        dragRotate={false}
-        onClick={handleClick}
-        getCursor={handleCursor}
-        interactiveLayerIds={['point']}
-        onViewportChange={handleViewportChange}
-        mapboxApiAccessToken={accessToken}
-        mapStyle={theme === 'dark' ? darkTheme : lightTheme}>
-        <Source id='alert' type='geojson' data={geoJSON}>
-          <Layer
-            id='point'
-            type='symbol'
-            layout={{
-              'icon-image': [
-                'match',
-                ['get', 'type'],
-                'palohälytys',
-                'alarm',
-                'tulipalo',
-                'fire',
-                'vahingontorjunta',
-                'nature',
-                'tieliikenneonnettomuus',
-                'car',
-                'vesiliikenneonnettomuus',
-                'boat',
-                'raideliikenneonnettomuus',
-                'train',
-                'ilmaliikenneonnettomuus',
-                'aeroplane',
-                'ensivastetehtävä',
-                'heal',
-                'ihmisen pelastaminen',
-                'people',
-                'eläimen pelastaminen',
-                'pets',
-                'vaarallisen aineen onnettomuus',
-                'warning-2',
-                'öljyvahinko',
-                'oil',
-                'warning'
-              ]
-            }}
-          />
-        </Source>
-        {isVisible && (
-          <Popup
-            tipSize={10}
-            latitude={latitude}
-            longitude={longitude}
-            offsetTop={-12}
-            closeButton={true}
-            closeOnClick={false}
-            dynamicPosition={false}
-            onClose={handlePopupClose}
-            anchor='bottom'>
-            <div>
-              <h3 className='popup-alert-title'>{title}</h3>
-              <p className='popup-alert-description'>{description}</p>
-              <p className='popup-alert-date'>{date}</p>
-            </div>
-          </Popup>
-        )}
-      </ReactMapGL>
-    </>
-  );
+		const { properties } = features[0];
+		const { title, description, date, latitude, longitude } = properties;
+
+		if (date == popupInfo.date && popupInfo.isVisible) {
+			handlePopupClose();
+			return;
+		}
+
+		if (properties !== undefined && latitude !== undefined && longitude !== undefined) {
+			handlePopupClose();
+
+			setTimeout(
+				() => {
+					setPopupInfo({
+						title,
+						description,
+						date,
+						latitude,
+						longitude,
+						isVisible: true
+					});
+				},
+				transitionHasEnded ? 0 : transitionDuration
+			);
+
+			centerTo(latitude, longitude);
+		}
+		return;
+	};
+
+	const centerTo = (latitude, longitude, zoom = viewport.zoom, duration = transitionDuration) => {
+		const loc = {
+			...viewport,
+			longitude,
+			latitude,
+			zoom,
+			transitionDuration: duration,
+			transitionInterpolator: new LinearInterpolator()
+		};
+		setViewport(loc);
+	};
+
+	const { title, description, date, latitude, longitude, isVisible } = popupInfo;
+
+	return (
+		<>
+			<InfoModal
+				title='Huom!'
+				description='Hälytykset sijoitetaan kartalle ainoastaan
+        		paikkakunnan mukaan, joten sijainnit eivät ole tarkkoja.'
+				okText='Sulje'
+			/>
+			<Spinner isVisible={isLoading} />
+			<ReactMapGL
+				{...viewport}
+				width={'100vw'}
+				height={'100vh'}
+				onLoad={() => setLoading(false)}
+				doubleClickZoom={false}
+				dragRotate={false}
+				onClick={handleClick}
+				getCursor={handleCursor}
+				onTransitionStart={() => handleTransition(false)}
+				onTransitionEnd={() => handleTransition(true)}
+				interactiveLayerIds={['point']}
+				onViewportChange={handleViewportChange}
+				mapboxApiAccessToken={accessToken}
+				mapStyle={theme === 'dark' ? darkTheme : lightTheme}>
+				<Source id='alert' type='geojson' data={geoJSON}>
+					<Layer
+						id='point'
+						type='symbol'
+						layout={{
+							'icon-image': [
+								'match',
+								['get', 'type'],
+								'palohälytys',
+								'alarm',
+								'tulipalo',
+								'fire',
+								'vahingontorjunta',
+								'nature',
+								'tieliikenneonnettomuus',
+								'car',
+								'vesiliikenneonnettomuus',
+								'boat',
+								'raideliikenneonnettomuus',
+								'train',
+								'ilmaliikenneonnettomuus',
+								'aeroplane',
+								'ensivastetehtävä',
+								'heal',
+								'ihmisen pelastaminen',
+								'people',
+								'eläimen pelastaminen',
+								'pet',
+								'vaarallisen aineen onnettomuus',
+								'danger',
+								'öljyvahinko',
+								'oil',
+								'warning'
+							]
+						}}
+					/>
+				</Source>
+				(
+				<Fade show={isVisible}>
+					<Popup
+						tipSize={7}
+						latitude={latitude || 0}
+						longitude={longitude || 0}
+						offsetTop={-13}
+						closeButton={true}
+						closeOnClick={false}
+						dynamicPosition={false}
+						onClose={handlePopupClose}
+						anchor='bottom'>
+						<div>
+							<h3 className='popup-alert-title'>{title}</h3>
+							<p className='popup-alert-description'>{description}</p>
+							<p className='popup-alert-date'>{date}</p>
+						</div>
+					</Popup>
+				</Fade>
+				)
+			</ReactMapGL>
+		</>
+	);
 };
 
 export default Map;
 
 Map.propTypes = {
-  data: PropTypes.array,
-  location: PropTypes.object
+	data: PropTypes.array,
+	location: PropTypes.object
 };

@@ -1,5 +1,5 @@
 export const removeWordsAfterSlash = sentence => {
-  const result = sentence.replace(/\/.*?,/, ',').split(',');
+  const result = sentence.replace(/\/.*?,/, ',').split(', ');
   return result;
 };
 

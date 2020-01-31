@@ -11,7 +11,7 @@ const InfoModal = ({ title, description, okText }) => {
     setVisible(true);
   };
 
-  const handleOk = e => {
+  const handleOk = () => {
     setVisible(false);
   };
 
