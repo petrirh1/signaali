@@ -31,7 +31,6 @@ const Map = ({ data, location }) => {
 	const lightTheme = 'mapbox://styles/petrirh1/ck4pnjtrwaodx1cmixukicu6w';
 	const darkTheme = 'mapbox://styles/petrirh1/ck4o4q5ib09541fjzqit8lpy1';
 	const transitionDuration = 145;
-	const [transitionHasEnded, setTransitionEnded] = useState(false);
 	const [isLoading, setLoading] = useState(true);
 	const [theme] = useContext(ThemeContext);
 	const [popupInfo, setPopupInfo] = useState(initialPopupInfo);
@@ -68,10 +67,6 @@ const Map = ({ data, location }) => {
 		setViewport(viewport);
 	};
 
-	const handleTransition = bool => {
-		setTransitionEnded(bool);
-	};
-
 	const handlePopupClose = () => {
 		setPopupInfo({ ...popupInfo, isVisible: false });
 	};
@@ -93,19 +88,14 @@ const Map = ({ data, location }) => {
 		if (properties !== undefined && latitude !== undefined && longitude !== undefined) {
 			handlePopupClose();
 
-			setTimeout(
-				() => {
-					setPopupInfo({
-						title,
-						description,
-						date,
-						latitude,
-						longitude,
-						isVisible: true
-					});
-				},
-				transitionHasEnded ? 0 : transitionDuration
-			);
+			setPopupInfo({
+				title,
+				description,
+				date,
+				latitude,
+				longitude,
+				isVisible: true
+			});
 
 			centerTo(latitude, longitude);
 		}
@@ -144,8 +134,6 @@ const Map = ({ data, location }) => {
 				dragRotate={false}
 				onClick={handleClick}
 				getCursor={handleCursor}
-				onTransitionStart={() => handleTransition(false)}
-				onTransitionEnd={() => handleTransition(true)}
 				clickRadius={2}
 				interactiveLayerIds={['point']}
 				onViewportChange={handleViewportChange}

@@ -13,9 +13,7 @@ const Fade = ({ show, children }) => {
 
 	return (
 		shouldRender && (
-			<div
-				style={{ animation: `${show ? 'fadeIn' : 'fadeOut'} ${show ? '0.5s' : '0.2s'}` }}
-				onAnimationEnd={onAnimationEnd}>
+			<div className={show ? 'fadeIn' : 'fadeOut'} onAnimationEnd={onAnimationEnd}>
 				{children}
 			</div>
 		)
