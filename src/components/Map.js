@@ -31,8 +31,8 @@ const Map = ({ data, location }) => {
 	const lightTheme = 'mapbox://styles/petrirh1/ck4pnjtrwaodx1cmixukicu6w';
 	const darkTheme = 'mapbox://styles/petrirh1/ck4o4q5ib09541fjzqit8lpy1';
 	const transitionDuration = 145;
-	const [isLoading, setLoading] = useState(true);
 	const [theme] = useContext(ThemeContext);
+	const [isLoading, setLoading] = useState(true);
 	const [popupInfo, setPopupInfo] = useState(initialPopupInfo);
 	const [viewport, setViewport] = useState(initialViewport);
 
@@ -85,7 +85,12 @@ const Map = ({ data, location }) => {
 			return;
 		}
 
-		if (properties !== undefined && latitude !== undefined && longitude !== undefined) {
+		if (
+			!isLoading &&
+			properties !== undefined &&
+			latitude !== undefined &&
+			longitude !== undefined
+		) {
 			handlePopupClose();
 
 			setPopupInfo({
@@ -177,26 +182,24 @@ const Map = ({ data, location }) => {
 					/>
 				</Source>
 				(
-				{
-					<Fade show={isVisible}>
-						<Popup
-							tipSize={7}
-							latitude={latitude || 0}
-							longitude={longitude || 0}
-							offsetTop={-13}
-							closeButton={true}
-							closeOnClick={false}
-							dynamicPosition={false}
-							onClose={handlePopupClose}
-							anchor='bottom'>
-							<div>
-								<h3 className='popup-alert-title'>{title}</h3>
-								<p className='popup-alert-description'>{description}</p>
-								<p className='popup-alert-date'>{date}</p>
-							</div>
-						</Popup>
-					</Fade>
-				}
+				<Fade show={isVisible}>
+					<Popup
+						tipSize={7}
+						latitude={latitude || 0}
+						longitude={longitude || 0}
+						offsetTop={-13}
+						closeButton={true}
+						closeOnClick={false}
+						dynamicPosition={false}
+						onClose={handlePopupClose}
+						anchor='bottom'>
+						<div>
+							<h3 className='popup-alert-title'>{title}</h3>
+							<p className='popup-alert-description'>{description}</p>
+							<p className='popup-alert-date'>{date}</p>
+						</div>
+					</Popup>
+				</Fade>
 				)
 			</ReactMapGL>
 		</>
