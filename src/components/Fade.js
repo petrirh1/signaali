@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
 const Fade = ({ show, children }) => {
 	const [shouldRender, setRender] = useState(show);
@@ -21,3 +22,8 @@ const Fade = ({ show, children }) => {
 };
 
 export default Fade;
+
+Fade.propTypes = {
+	show: PropTypes.bool,
+	children: PropTypes.object
+};
