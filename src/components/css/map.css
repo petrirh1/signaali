@@ -68,11 +68,11 @@
 }
 
 .fadeIn {
-	animation: fadeIn 0.65s;
+	animation: fadeIn 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
 .fadeOut {
-	animation: fadeOut 0.2s;
+	animation: fadeOut 0.2s ease-out both;
 	animation-fill-mode: forwards;
 }
 
