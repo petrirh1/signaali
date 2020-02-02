@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import './css/fade.css';
 
 const Fade = ({ show, children }) => {
 	const [shouldRender, setRender] = useState(show);

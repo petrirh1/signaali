@@ -1,6 +1,5 @@
 .mapboxgl-popup {
 	max-width: 400px;
-	transition-timing-function: cubic-bezier(0.465, -0.005, 0.06, 1);
 }
 
 .mapboxgl-popup-content {
@@ -64,32 +63,5 @@
 
 	.mapboxgl-popup-close-button:hover {
 		background: white;
-	}
-}
-
-.fadeIn {
-	animation: fadeIn 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-}
-
-.fadeOut {
-	animation: fadeOut 0.2s ease-out both;
-	animation-fill-mode: forwards;
-}
-
-@keyframes fadeIn {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
-}
-
-@keyframes fadeOut {
-	0% {
-		opacity: 1;
-	}
-	100% {
-		opacity: 0;
 	}
 }
