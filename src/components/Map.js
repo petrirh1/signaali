@@ -45,7 +45,7 @@ const Map = ({ data, location }) => {
 		}
 
 		const { latitude, longitude } = location.state.data;
-		setPopupInfo({ ...location.state.data, isVisible: true });
+		setPopupInfo({ ...location.state.data, isVisible: false });
 		centerTo(latitude, longitude, 14.2, 0);
 
 		// reset map view on browser refresh when location.state not null
@@ -58,6 +58,11 @@ const Map = ({ data, location }) => {
 		Point: ['latitude', 'longitude'],
 		include: ['title', 'type', 'severity', 'description', 'date', 'latitude', 'longitude']
 	});
+
+	const handleOnLoad = () => {
+		setPopupInfo({ ...popupInfo, isVisible: true });
+		setLoading(false);
+	};
 
 	const handleCursor = ({ isHovering }) => {
 		return isHovering ? 'pointer' : 'default';
@@ -134,7 +139,7 @@ const Map = ({ data, location }) => {
 				{...viewport}
 				width={'100vw'}
 				height={'100vh'}
-				onLoad={() => setLoading(false)}
+				onLoad={handleOnLoad}
 				doubleClickZoom={false}
 				dragRotate={false}
 				onClick={handleClick}
@@ -182,7 +187,7 @@ const Map = ({ data, location }) => {
 					/>
 				</Source>
 				(
-				<Fade show={isVisible}>
+				<Fade show={isVisible} isLoading={isLoading}>
 					<Popup
 						tipSize={7}
 						latitude={latitude || 0}
