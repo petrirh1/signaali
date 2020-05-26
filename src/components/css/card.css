@@ -47,9 +47,11 @@
 }
 
 .content-wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	padding: 8px 8px 8px 6px;
 	text-align: left;
-	margin: auto 0;
 }
 
 .alert-card .card-description,
