@@ -29,7 +29,7 @@ app.get('/api/alerts', (request, response) => {
 	});
 });
 
-// app.use(compression);
+app.use(compression());
 app.use(express.static(path.join(__dirname, 'build')));
 
 app.get('*', (req, res) => {
