@@ -4,8 +4,6 @@
 
 Lists 100 latest emergency service alerts from Finland in realtime.
 
-![alt tag](https://i.imgur.com/OmhIYEz.png "this is just a screenshot")
-
 ## Installation
 
 - Clone the repo in your terminal by clicking the _green_ clone or download button at the top right and copyin the url
