@@ -113,3 +113,15 @@ html[data-theme='dark'] .alert-card .card-date {
 		opacity: 1;
 	}
 }
+
+@media all and (max-width: 752px) {
+	.alert-card i {
+		max-width: 100%;
+	}
+}
+
+@media all and (max-width: 414px) {
+	.alert-card i {
+		max-width: 52px;
+	}
+}
