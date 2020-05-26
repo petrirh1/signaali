@@ -13,7 +13,7 @@ const Card = ({ data }) => {
 	const low = theme === 'dark' ? '#81848B' : '#878787';
 	const medium = theme === 'dark' ? '#FFD160' : '#F5AD00';
 	const high = theme === 'dark' ? '#FF5F54' : '#FE6D63';
-	const lowBG = theme === 'dark' ? '#25262A' : '#F5F5F5';
+	const lowBG = theme === 'dark' ? '#25262A' : '#f4f4f4';
 	const mediumBG = theme === 'dark' ? '#262622' : '#FFF4D9';
 	const highBG = theme === 'dark' ? '#262224' : '#FFEFEE';
 
@@ -29,7 +29,7 @@ const Card = ({ data }) => {
 		}
 	};
 
-	const handleClick = e => {
+	const handleClick = () => {
 		handleRedirect();
 	};
 
@@ -57,10 +57,15 @@ const Card = ({ data }) => {
 					}}
 				/>
 			) : (
-				<div className='alert-card' onClick={handleClick} onKeyPress={handleKeyPress} tabIndex='0'>
+				<div
+					className='alert-card'
+					onClick={handleClick}
+					onKeyPress={handleKeyPress}
+					tabIndex='0'>
 					<i
 						className='material-icons-round'
 						style={{
+							transition: 'all 0.25s',
 							color: severity(description),
 							background:
 								severity(description) === low

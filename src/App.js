@@ -71,7 +71,7 @@ function App() {
 		<ThemeProvider>
 			<Router>
 				<div className='App'>
-					<Header isLoading={isLoading} hasError={hasError} />
+					<Header isLoading={isLoading} />
 					<Suspense fallback={<Spinner />}>
 						<Switch>
 							<Route
@@ -89,7 +89,12 @@ function App() {
 									/>
 								)}
 							/>
-							<Route path='/kartta' exact strict render={props => <Map {...props} data={data} />} />
+							<Route
+								path='/kartta'
+								exact
+								strict
+								render={props => <Map {...props} data={data} />}
+							/>
 							<Route component={NoMatch} />
 						</Switch>
 					</Suspense>

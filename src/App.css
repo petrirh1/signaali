@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400,500&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,500&display=swap');
 
 * {
 	box-sizing: border-box;
@@ -46,26 +46,27 @@ body {
 	text-align: center;
 }
 
-.content-container {
+.App .content-container {
+	max-width: 1500px;
+	margin: auto;
 	display: grid;
-	padding-bottom: 30px;
 	width: 95vw;
+	min-height: calc(100vh - 621px);
 	justify-content: center;
 	grid-template-columns: repeat(auto-fit, 340px);
 	grid-auto-rows: minmax(min-content, max-content);
-	grid-gap: 0.8em;
-	grid-auto-flow: dense;
+	grid-gap: 1.2em;
 }
 
 @media all and (max-width: 752px) {
-	.content-container {
+	.App .content-container {
 		width: 85vw;
 		grid-template-columns: repeat(auto-fit, 100%);
 	}
 }
 
 @media all and (max-width: 414px) {
-	.content-container {
+	.App .content-container {
 		width: calc(100vw - 30px);
 		min-width: 80vw;
 		grid-template-columns: repeat(auto-fit, minmax(250px, 100%));
@@ -73,7 +74,7 @@ body {
 }
 
 @media all and (max-width: 320px) {
-	.content-container {
+	.App .content-container {
 		grid-template-columns: repeat(auto-fit, minmax(100%, 100%));
 	}
 }

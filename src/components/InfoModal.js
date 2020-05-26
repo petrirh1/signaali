@@ -5,40 +5,40 @@ import 'antd/dist/antd.css';
 import './css/info-modal.css';
 
 const InfoModal = ({ title, description, okText }) => {
-  const [isVisible, setVisible] = useState(false);
+	const [isVisible, setVisible] = useState(false);
 
-  const showModal = () => {
-    setVisible(true);
-  };
+	const showModal = () => {
+		setVisible(true);
+	};
 
-  const handleOk = () => {
-    setVisible(false);
-  };
+	const handleOk = () => {
+		setVisible(false);
+	};
 
-  return (
-    <div>
-      <button onClick={showModal} className='info-popup-button' tabIndex='0'>
-        <i className='material-icons-round'>info</i>
-      </button>
-      <Modal
-        title={title}
-        visible={isVisible}
-        onOk={handleOk}
-        onCancel={handleOk}
-        closable={false}
-        okText={okText}
-        centered
-        cancelButtonProps={{ style: { display: 'none' } }}>
-        <p>{description}</p>
-      </Modal>
-    </div>
-  );
+	return (
+		<div>
+			<button onClick={showModal} className='info-popup-button' tabIndex='0'>
+				<i className='material-icons-round'>info</i>
+			</button>
+			<Modal
+				title={title}
+				visible={isVisible}
+				onOk={handleOk}
+				onCancel={handleOk}
+				closable={false}
+				okText={okText}
+				centered
+				cancelButtonProps={{ style: { display: 'none' } }}>
+				<p>{description}</p>
+			</Modal>
+		</div>
+	);
 };
 
 export default InfoModal;
 
 InfoModal.propTypes = {
-  title: PropTypes.string,
-  description: PropTypes.string,
-  okText: PropTypes.string
+	title: PropTypes.string,
+	description: PropTypes.string,
+	okText: PropTypes.string,
 };
