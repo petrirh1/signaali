@@ -217,7 +217,7 @@ const Map = ({ data, location }) => {
 						tipSize={7}
 						latitude={latitude || 0}
 						longitude={longitude || 0}
-						offsetTop={-13}
+						offsetTop={0}
 						closeButton={true}
 						closeOnClick={false}
 						dynamicPosition={false}
