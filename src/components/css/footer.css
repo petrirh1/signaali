@@ -33,7 +33,11 @@ footer .icon-container {
 }
 
 footer .icon-container .material-icons-round {
+	font-size: 20px;
+	/* background: #5d5e63; */
 	color: rgb(255, 255, 255);
+	border: 2px solid #66687294;
+	border-radius: 100%;
 }
 
 footer .wrapper .title {
