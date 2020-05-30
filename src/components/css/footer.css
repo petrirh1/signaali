@@ -28,11 +28,19 @@ footer .wrapper:nth-child(2) {
 	border-right: 2px solid #35363a7a;
 }
 
+footer .icon-container {
+	margin-bottom: 1rem;
+}
+
+footer .icon-container .material-icons-round {
+	color: rgb(255, 255, 255);
+}
+
 footer .wrapper .title {
 	color: white;
 	font-weight: 400;
-	font-size: 1.05rem;
-	margin-bottom: 0.6rem;
+	margin-bottom: 6px;
+	font-size: 1rem;
 }
 
 footer .wrapper .subtitle {

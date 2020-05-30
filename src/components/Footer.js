@@ -14,15 +14,23 @@ const Footer = ({ statistics }) => {
 		<footer>
 			<div className='footer-container'>
 				<div className='wrapper'>
+					<div className='icon-container'>
+						<i className='material-icons-round'>bar_chart</i>
+					</div>
 					<h2 className='title'>{count}</h2>
 					<p className='subtitle'>Hälytystä</p>
 				</div>
 				<div className='wrapper'>
+					<div className='icon-container'>
+						<i className='material-icons-round'>star_rate</i>
+					</div>
 					<h2 className='title'>{mostCommonType || '-'}</h2>
 					<p className='subtitle'>Yleisin hälytys</p>
 				</div>
-
 				<div className='wrapper'>
+					<div className='icon-container'>
+						<i className='material-icons-round'>domain</i>
+					</div>
 					<h2 className='title'>{mostCommonPlace || '-'}</h2>
 					<p className='subtitle'>Kiireisin paikkakunta</p>
 				</div>
