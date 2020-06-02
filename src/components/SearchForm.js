@@ -53,6 +53,5 @@ export default SearchForm;
 
 SearchForm.propTypes = {
 	userFilter: PropTypes.func,
-	isLoading: PropTypes.bool,
-	len: PropTypes.number
+	isLoading: PropTypes.bool
 };
