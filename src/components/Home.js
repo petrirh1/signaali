@@ -1,12 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import SearchForm from '../components/SearchForm';
 import Card from '../components/Card';
 import CardSkeleton from '../components/CardSkeleton';
 import NoResults from '../components/NoResults';
 import Footer from '../components/Footer';
-import PropTypes from 'prop-types';
 import BackToTop from './BackToTop';
-
 import getStatistics from '../utils/statistics';
 
 const title = document.title;
@@ -21,9 +21,7 @@ const Home = ({ userFilter, data, filtered, isLoading, hasError }) => {
 			<SearchForm userFilter={userFilter} isLoading={isLoading} />
 			<div className='content-container'>
 				{isLoading
-					? [...new Array(100)].map((d, i) => (
-							<CardSkeleton data={d} key={i} hasError={hasError} />
-					  ))
+					? [...new Array(100)].map((d, i) => <CardSkeleton data={d} key={i} />)
 					: filtered.map((data, index) => <Card data={data} key={index} />)}
 				{filtered.length < 1 ? (
 					<NoResults isLoading={isLoading} hasError={hasError} />
