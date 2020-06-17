@@ -23,7 +23,7 @@ const setAlertType = sentence => {
 		return 'eläimen pelastaminen';
 	} else if (sentence.includes('vaarallisen')) {
 		return 'vaarallisen aineen onnettomuus';
-	} else if (sentence.includes('ymp.onnet')) {
+	} else if (sentence.includes('ymp.onnet') || sentence.includes('öljy')) {
 		return 'ympäristöonnettomuus';
 	} else {
 		return 'muu';
