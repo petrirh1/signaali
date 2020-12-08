@@ -40,5 +40,5 @@ export default InfoModal;
 InfoModal.propTypes = {
 	title: PropTypes.string,
 	description: PropTypes.string,
-	okText: PropTypes.string,
+	okText: PropTypes.string
 };

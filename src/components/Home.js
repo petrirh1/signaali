@@ -23,9 +23,7 @@ const Home = ({ userFilter, data, filtered, isLoading, hasError }) => {
 				{isLoading
 					? [...new Array(100)].map((d, i) => <CardSkeleton data={d} key={i} />)
 					: filtered.map((data, index) => <Card data={data} key={index} />)}
-				{filtered.length < 1 ? (
-					<NoResults isLoading={isLoading} hasError={hasError} />
-				) : null}
+				{filtered.length < 1 ? <NoResults isLoading={isLoading} hasError={hasError} /> : null}
 			</div>
 			<Footer statistics={statistics} />
 		</div>

@@ -1,10 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import ReactMapGL, {
-	Source,
-	Layer,
-	Popup,
-	LinearInterpolator
-} from 'react-map-gl';
+import ReactMapGL, { Source, Layer, Popup, LinearInterpolator } from 'react-map-gl';
 import { ThemeContext } from './ThemeContext';
 import InfoModal from './InfoModal';
 import GeoJSON from 'geojson';
@@ -61,15 +56,7 @@ const Map = ({ data, location }) => {
 
 	const geoJSON = GeoJSON.parse(data, {
 		Point: ['latitude', 'longitude'],
-		include: [
-			'title',
-			'type',
-			'severity',
-			'description',
-			'date',
-			'latitude',
-			'longitude'
-		]
+		include: ['title', 'type', 'severity', 'description', 'date', 'latitude', 'longitude']
 	});
 
 	const handleOnLoad = () => {
@@ -125,12 +112,7 @@ const Map = ({ data, location }) => {
 		return;
 	};
 
-	const centerTo = (
-		latitude,
-		longitude,
-		zoom = viewport.zoom,
-		duration = transitionDuration
-	) => {
+	const centerTo = (latitude, longitude, zoom = viewport.zoom, duration = transitionDuration) => {
 		const loc = {
 			...viewport,
 			longitude,
@@ -142,14 +124,7 @@ const Map = ({ data, location }) => {
 		setViewport(loc);
 	};
 
-	const {
-		title,
-		description,
-		date,
-		latitude,
-		longitude,
-		isVisible
-	} = popupInfo;
+	const { title, description, date, latitude, longitude, isVisible } = popupInfo;
 
 	return (
 		<>

@@ -57,13 +57,9 @@ const Card = ({ data }) => {
 					}}
 				/>
 			) : (
-				<div
-					className='alert-card'
-					onClick={handleClick}
-					onKeyPress={handleKeyPress}
-					tabIndex='0'>
+				<div className='alert-card' onClick={handleClick} onKeyPress={handleKeyPress} tabIndex='0'>
 					<i
-						className='material-icons-round'
+						className='material-icons'
 						style={{
 							transition: 'all 0.25s',
 							color: severity(description),

@@ -4,9 +4,7 @@ import { useMediaPredicate } from 'react-media-hook';
 export const ThemeContext = createContext();
 
 export const ThemeProvider = props => {
-	const preferredTheme = useMediaPredicate('(prefers-color-scheme: dark)')
-		? 'dark'
-		: 'light';
+	const preferredTheme = useMediaPredicate('(prefers-color-scheme: dark)') ? 'dark' : 'light';
 	const savedTheme = localStorage.getItem('theme') || preferredTheme;
 	const [theme, setTheme] = useState(savedTheme);
 
@@ -35,9 +33,5 @@ export const ThemeProvider = props => {
 		[theme]
 	);
 
-	return (
-		<ThemeContext.Provider value={[theme, setTheme]}>
-			{props.children}
-		</ThemeContext.Provider>
-	);
+	return <ThemeContext.Provider value={[theme, setTheme]}>{props.children}</ThemeContext.Provider>;
 };

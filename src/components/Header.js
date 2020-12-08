@@ -43,20 +43,13 @@ const Header = ({ isLoading }) => {
 				}}>
 				<nav className='header-nav'>
 					<ul className='header-nav-links'>
-						<NavLink
-							activeClassName='nav-link-active'
-							exact
-							to='/'
-							tabIndex='0'>
+						<NavLink activeClassName='nav-link-active' exact to='/' tabIndex='0'>
 							<li>
 								<i className='material-icons-round'>notifications</i>
 								{maxWidth500 ? '' : 'Hälytykset'}
 							</li>
 						</NavLink>
-						<NavLink
-							activeClassName='nav-link-active'
-							to='/kartta'
-							tabIndex='0'>
+						<NavLink activeClassName='nav-link-active' to='/kartta' tabIndex='0'>
 							<li>
 								<i className='material-icons-round'>map</i>
 								{maxWidth500 ? '' : 'Kartta'}

@@ -32,7 +32,6 @@ function App() {
 				setFiltered(newItem);
 			})
 			.catch(err => {
-				console.log(err);
 				setError(true);
 			})
 			.finally(() => setLoading(false));
@@ -89,12 +88,7 @@ function App() {
 									/>
 								)}
 							/>
-							<Route
-								path='/kartta'
-								exact
-								strict
-								render={props => <Map {...props} data={data} />}
-							/>
+							<Route path='/kartta' exact strict render={props => <Map {...props} data={data} />} />
 							<Route component={NoMatch} />
 						</Switch>
 					</Suspense>
